@@ -1,0 +1,20 @@
+locations:
+  - name: "*Bhairahawa, Nepal*"
+    latitude: 27.5127
+    longitude: 83.4531
+
+  - name: "*Montevideo, Uruguay*"
+    latitude: -34.9059
+    longitude: -56.1914
+
+  - name: "*Olón, Ecuador*"
+    latitude: -1.7982
+    longitude: -80.7582
+
+  - name: "*San Francisco, California*"
+    latitude: 37.7793
+    longitude: -122.4192
+
+  - name: "*Singapore*"
+    latitude: 1.2905
+    longitude: 103.852
