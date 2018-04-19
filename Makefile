@@ -17,6 +17,7 @@ install-vundle:
 	else\
 		git clone $(VUNDLE_URL) $(VUNDLE_DIR);\
 	fi
+	@vim +PluginClean! +qall
 	@vim +PluginInstall! +qall
 
 clean:
