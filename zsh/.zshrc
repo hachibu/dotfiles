@@ -38,6 +38,10 @@ function truncate-zsh-history() {
   echo "$(tail -n $HIST_SIZE $HIST)" > "$HIST"
 }
 
+function growl() {
+  echo "\e]9;$1\007"
+}
+
 preexec() {
   redis-cli incr "zsh-history:$1" > /dev/null
 }
