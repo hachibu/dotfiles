@@ -41,5 +41,5 @@ set title
 set updatetime=500
 set wildmode=list:longest,list:full
 
-let g:ctrlp_custom_ignore = {'dir': '\v[\/](doc|tmp|node_modules)', 'file': '\v\.(exe|so|dll)$'}
+let g:ctrlp_custom_ignore = {'dir': '\v[\/](tmp|node_modules)', 'file': '\v\.(exe|so|dll)$'}
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty', 'discarding unexpected', 'is not recognized!']
