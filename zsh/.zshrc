@@ -35,7 +35,7 @@ function explain-shell() {
 
 function truncate-zsh-history() {
   local HIST="$HOME/.zsh_history"
-  local HIST_SIZE=100
+  local HIST_SIZE=1000
   echo "$(tail -n $HIST_SIZE $HIST)" > "$HIST"
 }
 
