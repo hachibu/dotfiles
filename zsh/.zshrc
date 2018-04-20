@@ -33,12 +33,6 @@ function explain-shell() {
   open "https://explainshell.com/explain?cmd=$1"
 }
 
-function truncate-zsh-history() {
-  local HIST="$HOME/.zsh_history"
-  local HIST_SIZE=1000
-  echo "$(tail -n $HIST_SIZE $HIST)" > "$HIST"
-}
-
 function growl() {
   echo "\e]9;$1\007"
 }
@@ -49,4 +43,3 @@ preexec() {
 
 # Initializers
 eval "$(rbenv init -)"
-truncate-zsh-history

@@ -80,16 +80,18 @@ precmd() {
 
 # Define prompts
 #
-batt() {
-    command pmset -g batt | egrep -o '\d+%'
+batt_status() {
+    pmset -g batt | egrep -o '\d+%'
+}
+
+wifi_status() {
+    local wifi_interface=$(networksetup -listnetworkserviceorder | grep -E -o 'Hardware Port: Wi-Fi, Device: \w+' | awk '{ print $(NF) }')
+    local wifi_status=$(ifconfig "$wifi_interface" | grep -E -o 'status: \w+' | awk '{ print $(NF) }')
+    echo "$wifi_status" | perl -ne 'print ucfirst'
 }
 
 PROMPT="%(?.%F{green}.%F{red})%? ❯%f "
-RPROMPT="$(batt)% %F{yellow}⚡%f %D{%a %L:%M:%S %p}"
-TMOUT=1
-TRAPALRM() {
-    zle reset-prompt
-}
+RPROMPT="$(wifi_status) · $(batt_status)% · %D{%a %L:%M %p}"
 
 # ------------------------------------------------------------------------------
 #
