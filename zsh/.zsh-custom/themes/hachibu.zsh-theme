@@ -81,7 +81,7 @@ precmd() {
 # Define prompts
 #
 batt() {
-  command pmset -g batt | egrep -o '\d+%'
+    command pmset -g batt | egrep -o '\d+%'
 }
 
 PROMPT="%(?.%F{green}.%F{red})%? ❯%f "
