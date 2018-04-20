@@ -80,8 +80,12 @@ precmd() {
 
 # Define prompts
 #
+batt() {
+  command pmset -g batt | egrep -o '\d+%'
+}
+
 PROMPT="%(?.%F{green}.%F{red})%? ❯%f "
-RPROMPT="%D{%a %L:%M:%S %p}"
+RPROMPT="$(batt)% %F{yellow}⚡%f %D{%a %L:%M:%S %p}"
 TMOUT=1
 TRAPALRM() {
     zle reset-prompt
