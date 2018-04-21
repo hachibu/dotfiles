@@ -3,7 +3,13 @@ ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="hachibu"
 
 source $ZSH/oh-my-zsh.sh
-source .secrets.zsh
+
+SECRETS_PATH="$HOME/.secrets.zsh"
+if [ -f $SECRETS_PATH ]; then
+  source $SECRETS_PATH
+else
+  touch $SECRETS_PATH
+fi
 
 # Path
 PATH="/usr/bin:/bin:/usr/sbin:/sbin"
@@ -13,9 +19,12 @@ for DIR in /usr/local/opt/*/bin; do
   if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
 done
 
-for DIR in $HOME/Code/scripts/*; do
-  if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
-done
+SCRIPTS_PATH="$HOME/Code/scripts"
+if [ -d $SCRIPTS_PATH ]; then
+  for DIR in $SCRIPTS_PATH/*; do
+    if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
+  done
+fi
 
 PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
 
