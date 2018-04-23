@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 
+# <bitbar.title>Life Bar</bitbar.title>
+# <bitbar.version>v1.0</bitbar.version>
+# <bitbar.author>hachibu</bitbar.author>
+# <bitbar.author.github>hachibu</bitbar.author.github>
+# <bitbar.desc>Displays how much life you have left. Set your birth and death in the script.</bitbar.desc>
+# <bitbar.image>https://</bitbar.image>
+# <bitbar.dependencies>python</bitbar.dependencies>
+# <bitbar.abouturl>https://github.com/hachibu/lifebar</bitbar.abouturl>
+
 from datetime import datetime
 
 birth = datetime(1984, 1, 2)
