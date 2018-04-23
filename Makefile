@@ -1,4 +1,4 @@
-STOW_DIRS  = bitbar darksky git vim zsh
+STOW_DIRS  = darksky git vim zsh
 VIM_DIR    = vim/.vim
 VUNDLE_DIR = $(VIM_DIR)/bundle/Vundle.vim
 VUNDLE_URL = https://github.com/VundleVim/Vundle.vim.git
