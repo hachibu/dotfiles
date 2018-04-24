@@ -23,4 +23,5 @@
 
 [alias]
   up    = !git fetch --all --prune && git pull --rebase
+  cp    = !git add . && git commit -m "Checkpoint" --cleanup=strip
   setup = !git up && bin/setup

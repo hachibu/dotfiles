@@ -74,7 +74,7 @@ precmd() {
       vcs_info # Get version control info before we start outputting stuff
       print -P "\n$(repo_information) %F{yellow}$(cmd_exec_time)%f"
     else
-      echo
+      print -P "\n%F{blue}$(pwd | cut -c 2-)%f"
     fi
 }
 
@@ -84,14 +84,8 @@ batt_status() {
     pmset -g batt | egrep -o '\d+%'
 }
 
-wifi_status() {
-    local wifi_interface=$(networksetup -listnetworkserviceorder | grep -E -o 'Hardware Port: Wi-Fi, Device: \w+' | awk '{ print $(NF) }')
-    local wifi_status=$(ifconfig "$wifi_interface" | grep -E -o 'status: \w+' | awk '{ print $(NF) }')
-    echo "$wifi_status" | perl -ne 'print ucfirst'
-}
-
 PROMPT="%(?.%F{green}.%F{red})%? ❯%f "
-RPROMPT="$(wifi_status) · $(batt_status)% · %D{%a %L:%M %p}"
+RPROMPT="$(batt_status)% %F{yellow}⚡%f %D{%a %L:%M %p}"
 
 # ------------------------------------------------------------------------------
 #
