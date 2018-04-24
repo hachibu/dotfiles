@@ -2,6 +2,8 @@ ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="hachibu"
 
+plugins=(heroku redis-cli yarn)
+
 source $ZSH/oh-my-zsh.sh
 
 SECRETS_PATH="$HOME/.secrets.zsh"
