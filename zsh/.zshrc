@@ -40,12 +40,9 @@ alias zsh-reload="source $HOME/.zshrc"
 alias zshrc="vim $HOME/.zshrc"
 
 # Functions
-function explain-shell() {
-  open "https://explainshell.com/explain?cmd=$1"
-}
-
-function growl() {
-  echo "\e]9;$1\007"
+function explain() {
+  local cmd="$@"
+  open "https://explainshell.com/explain?cmd=$cmd"
 }
 
 preexec() {
