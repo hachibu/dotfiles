@@ -22,6 +22,6 @@
   default = current
 
 [alias]
-  up    = !git fetch --all --prune && git pull --rebase
-  cp    = !git add . && git commit -m "Checkpoint" --cleanup=strip
-  setup = !git up && bin/setup
+  u = !git fetch --all --prune && git pull --rebase
+  c = !git add . && git commit -m "Checkpoint" --cleanup=strip
+  s = rebase -i HEAD~2

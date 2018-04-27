@@ -32,8 +32,8 @@ PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
 
 # Aliases
 alias vimrc="vim $HOME/.vimrc"
-alias wootric-services="svscan $HOME/Code/Wootric/services"
-alias wootric-services-slim="svscan $HOME/Code/Wootric/services-slim"
+alias wootric-services="svscan $HOME/Code/Wootric/services-slim"
+alias wootric-services-all="svscan $HOME/Code/Wootric/services"
 alias wootric-pull-requests="github-pull-requests wootric"
 alias wootric-pull-requests-post="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
 alias zsh-reload="source $HOME/.zshrc"
