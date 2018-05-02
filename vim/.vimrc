@@ -14,6 +14,7 @@ Plugin 'rhysd/vim-crystal'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 filetype plugin indent on

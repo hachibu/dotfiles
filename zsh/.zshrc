@@ -31,6 +31,7 @@ fi
 PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
 
 # Aliases
+alias v="vim"
 alias vimrc="vim $HOME/.vimrc"
 alias wootric-services="svscan $HOME/Code/Wootric/services-slim"
 alias wootric-services-all="svscan $HOME/Code/Wootric/services"
