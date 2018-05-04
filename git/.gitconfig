@@ -22,6 +22,7 @@
   default = current
 
 [alias]
-  u = !git fetch --all --prune && git pull --rebase
   c = !git add . && git commit -m "Checkpoint" --cleanup=strip
+  e = config --edit --global
   s = rebase -i HEAD~2
+  u = !git fetch --all --prune && git pull --rebase
