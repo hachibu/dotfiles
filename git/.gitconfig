@@ -26,6 +26,5 @@
   b = branch
   c = !git add . && git commit -m "Checkpoint" --cleanup=strip
   e = config --edit --global
-  p = push --force
   s = rebase -i HEAD~2
   u = !git fetch --all --prune && git pull --rebase
