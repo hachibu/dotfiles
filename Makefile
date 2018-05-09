@@ -7,11 +7,13 @@ uninstall:
 	@stow -D $(STOW_DIRS) -t ~
 	@stow -D stow -t ~
 	@sudo stow -D etc -t /etc
+	@echo 'dotfiles uninstalled'
 
 install: install-vundle
 	@stow -S stow -t ~
 	@stow -S $(STOW_DIRS) -t ~
 	@sudo stow -S etc -t /etc
+	@echo 'dotfiles installed'
 
 install-vundle:
 	@if [ -d "$(VUNDLE_DIR)" ]; then\
