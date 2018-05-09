@@ -4,14 +4,14 @@ VUNDLE_DIR = $(VIM_DIR)/bundle/Vundle.vim
 VUNDLE_URL = https://github.com/VundleVim/Vundle.vim.git
 
 uninstall:
-	stow -D $(STOW_DIRS) -t ~
-	stow -D stow -t ~
-	sudo stow -D etc -t /etc
+	@stow -D $(STOW_DIRS) -t ~
+	@stow -D stow -t ~
+	@sudo stow -D etc -t /etc
 
 install: install-vundle
-	stow -S stow -t ~
-	stow -S $(STOW_DIRS) -t ~
-	sudo stow -S etc -t /etc
+	@stow -S stow -t ~
+	@stow -S $(STOW_DIRS) -t ~
+	@sudo stow -S etc -t /etc
 
 install-vundle:
 	@if [ -d "$(VUNDLE_DIR)" ]; then\
@@ -23,4 +23,4 @@ install-vundle:
 	@vim +PluginInstall! +qall
 
 clean:
-	rm -rf $(VIM_DIR)
+	@rm -rf $(VIM_DIR)
