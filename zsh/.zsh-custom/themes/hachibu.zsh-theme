@@ -80,12 +80,8 @@ precmd() {
 
 # Define prompts
 #
-batt_status() {
-    pmset -g batt | egrep -o '\d+%'
-}
-
 PROMPT="%(?.%F{green}.%F{red})%? ❯%f "
-RPROMPT="$(batt_status)% %F{yellow}⚡%f %D{%a %L:%M %p}"
+RPROMPT="%D{%a %L:%M %p}"
 
 # ------------------------------------------------------------------------------
 #
