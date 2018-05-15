@@ -5,6 +5,7 @@ ZSH_THEME="hachibu"
 plugins=(heroku redis-cli yarn)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/local/etc/profile.d/z.sh
 
 SECRETS_PATH="$HOME/.secrets.zsh"
 if [ -f $SECRETS_PATH ]; then
