@@ -29,8 +29,6 @@ if [ -d $SCRIPTS_PATH ]; then
   done
 fi
 
-PATH="/Applications/calibre.app/Contents/MacOS:$PATH"
-
 # Aliases
 alias v="vim"
 alias vimrc="vim $HOME/.vimrc"
