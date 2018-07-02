@@ -4,15 +4,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'rhysd/vim-crystal'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mattn/emmet-vim'
 
 call vundle#end()
 filetype plugin indent on
