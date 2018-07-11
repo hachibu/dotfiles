@@ -30,6 +30,7 @@ if [ -d $SCRIPTS_PATH ]; then
 fi
 
 # Aliases
+alias rake="bundle exec rake"
 alias v="vim"
 alias vimrc="vim $HOME/.vimrc"
 alias wootric-services="svscan $HOME/Code/Wootric/services/wootric-services"
