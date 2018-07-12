@@ -31,6 +31,7 @@ fi
 
 # Aliases
 alias rake="bundle exec rake"
+alias rails="bundle exec rails"
 alias v="vim"
 alias vimrc="vim $HOME/.vimrc"
 alias wootric-services="svscan $HOME/Code/Wootric/services/wootric-services"
