@@ -26,3 +26,4 @@ Temporary Items
 
 # Vim
 *.sw*
+*.log
