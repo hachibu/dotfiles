@@ -32,22 +32,16 @@ fi
 # Aliases
 alias rake="bundle exec rake"
 alias rails="foreman run rails"
-alias v="vim"
 alias vimrc="vim $HOME/.vimrc"
 alias wootric-services="svscan $HOME/Code/Wootric/services/wootric-services"
 alias wootric-pull-requests="github-pull-requests wootric"
 alias wootric-pull-requests-post="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
-alias zsh-reload="source $HOME/.zshrc"
 alias zshrc="vim $HOME/.zshrc"
 
 # Functions
-function explain() {
+explain() {
   local cmd="$@"
   open "https://explainshell.com/explain?cmd=$cmd"
-}
-
-preexec() {
-  redis-cli incr "zsh-history:$1" > /dev/null
 }
 
 # Initializers
