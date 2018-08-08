@@ -11,6 +11,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'rhysd/vim-crystal'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'kien/rainbow_parentheses.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -47,3 +50,8 @@ nnoremap <C-H> <C-W><C-H>
 
 let g:ctrlp_custom_ignore = {'dir': '\v[\/](tmp|node_modules)', 'file': '\v\.(exe|so|dll)$'}
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty', 'discarding unexpected', 'is not recognized!', 'invalid value']
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
