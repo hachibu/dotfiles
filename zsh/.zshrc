@@ -2,7 +2,7 @@ ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="hachibu"
 
-plugins=(heroku redis-cli yarn)
+plugins=(git heroku redis-cli yarn)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/local/etc/profile.d/z.sh
@@ -30,6 +30,7 @@ if [ -d $SCRIPTS_PATH ]; then
 fi
 
 # Aliases
+alias gce="git config --edit --global"
 alias rake="bundle exec rake"
 alias rails="foreman run rails"
 alias vimrc="vim $HOME/.vimrc"

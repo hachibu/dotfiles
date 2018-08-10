@@ -20,12 +20,3 @@
 
 [push]
   default = current
-
-[alias]
-  a  = commit --amend
-  b  = branch
-  cp = !git add . && git commit -m "Checkpoint" --cleanup=strip
-  co = checkout
-  e  = config --edit --global
-  s  = rebase -i HEAD~2
-  up = !git fetch --all --prune && git pull --rebase
