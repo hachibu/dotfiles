@@ -36,9 +36,9 @@ alias gfp="gfa && gup"
 alias rake="bundle exec rake"
 alias rails="foreman run rails"
 alias vimrc="vim $HOME/.vimrc"
-alias wootric-services="svscan $HOME/Code/Wootric/services/wootric-services"
-alias wootric-pull-requests="github-pull-requests wootric"
-alias wootric-pull-requests-post="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
+alias ws="svscan $HOME/Code/Wootric/services/wootric-services"
+alias wpr="github-pull-requests wootric"
+alias wprp="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
 alias zshrc="vim $HOME/.zshrc"
 
 # Functions
