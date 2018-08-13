@@ -30,6 +30,8 @@ if [ -d $SCRIPTS_PATH ]; then
 fi
 
 # Aliases
+alias gc='git commit'
+alias gc!='git commit --amend'
 alias gas=" cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh | grep alias | less"
 alias gce="git config --edit --global"
 alias gfp="gfa && gup"
