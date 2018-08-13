@@ -31,6 +31,7 @@ fi
 
 # Aliases
 alias gce="git config --edit --global"
+alias gfp="gfa && gup"
 alias rake="bundle exec rake"
 alias rails="foreman run rails"
 alias vimrc="vim $HOME/.vimrc"
