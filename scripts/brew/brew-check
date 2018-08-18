@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+brew update
+brew prune
+brew cleanup --prune=1
+brew doctor
+brew missing

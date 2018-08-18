@@ -22,7 +22,7 @@ for DIR in /usr/local/opt/*/bin; do
   if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
 done
 
-SCRIPTS_PATH="$HOME/Code/scripts"
+SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
   for DIR in $SCRIPTS_PATH/*; do
     if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi

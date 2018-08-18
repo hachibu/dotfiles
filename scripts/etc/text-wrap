@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+PATTERN=$(printf '{print "%s"; print; print "%s"}' "$1" "$1")
+
+awk -v RS="" "$PATTERN"

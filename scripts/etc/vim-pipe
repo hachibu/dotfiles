@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+TEMP=$(mktemp)
+
+cat - > "$TEMP" || exit $?
+vim "$TEMP" < /dev/tty > /dev/tty
+cat "$TEMP"
+rm "$TEMP"

@@ -1,0 +1,9 @@
+name: timeout
+version: 0.1.0
+
+authors:
+  - hachibu <raymondsohn@gmail.com>
+
+crystal: 0.25.1
+
+license: MIT

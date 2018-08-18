@@ -1,0 +1,6 @@
+- name: "yes"
+  command: "echo 'yes'"
+
+- name: "no"
+  command: "echo 'no'"
+  directory: "$HOME"

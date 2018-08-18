@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+printf '*Yesterday*\n- ?\n*Today*\n- ?' | vim-pipe | slack-post-message async-standup

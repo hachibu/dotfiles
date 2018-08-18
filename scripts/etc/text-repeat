@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+text = ARGV[0].to_s.strip
+total = ARGV[1].to_i
+
+printf (text + ' ') * total
