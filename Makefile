@@ -1,4 +1,4 @@
-STOW_DIRS  = darksky git vim zsh irb
+STOW_DIRS  = git vim zsh irb
 VIM_DIR    = vim/.vim
 VUNDLE_DIR = $(VIM_DIR)/bundle/Vundle.vim
 VUNDLE_URL = https://github.com/VundleVim/Vundle.vim.git
@@ -6,13 +6,11 @@ VUNDLE_URL = https://github.com/VundleVim/Vundle.vim.git
 uninstall:
 	@stow -D $(STOW_DIRS) -t ~
 	@stow -D stow -t ~
-	@sudo stow -D etc -t /etc
 	@echo 'dotfiles uninstalled'
 
 install: install-vundle
 	@stow -S stow -t ~
 	@stow -S $(STOW_DIRS) -t ~
-	@sudo stow -S etc -t /etc
 	@echo 'dotfiles installed'
 
 install-vundle:

@@ -5,7 +5,6 @@ ZSH_THEME="hachibu"
 plugins=(git heroku redis-cli yarn)
 
 source $ZSH/oh-my-zsh.sh
-source /usr/local/etc/profile.d/z.sh
 
 SECRETS_PATH="$HOME/.secrets.zsh"
 if [ -f $SECRETS_PATH ]; then
@@ -15,12 +14,14 @@ else
 fi
 
 # Path
-PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
-PATH="/usr/local/bin:$PATH"
-for DIR in /usr/local/opt/*/bin; do
-  if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
-done
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  PATH="/usr/local/bin:$PATH"
+  for DIR in /usr/local/opt/*/bin; do
+    if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
+  done
+fi
 
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
@@ -44,11 +45,7 @@ alias wpr="github-pull-requests wootric"
 alias wprp="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
 alias zshrc="vim $HOME/.zshrc"
 
-# Functions
-explain() {
-  local cmd="$@"
-  open "https://explainshell.com/explain?cmd=$cmd"
-}
-
 # Initializers
-eval "$(rbenv init -)"
+if [ -x "$(command -v rbenv)" ]; then
+  eval "$(rbenv init -)"
+fi
