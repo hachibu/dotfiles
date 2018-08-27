@@ -80,8 +80,8 @@ precmd() {
 
 # Define prompts
 #
-PROMPT="%(?.%F{green}.%F{red})%? ❯%f "
-RPROMPT="%D{%a %L:%M %p}"
+
+PROMPT="%n:%m %(?.%F{green}.%F{red})❯%f "
 
 # ------------------------------------------------------------------------------
 #
