@@ -14,8 +14,10 @@ install: install-vundle
 	@echo 'dotfiles installed'
 
 install-vundle:
+	@git fetch -q origin
+	@git pull -q --rebase
 	@if [ -d "$(VUNDLE_DIR)" ]; then\
-		(cd $(VUNDLE_DIR); git pull --rebase);\
+		(cd $(VUNDLE_DIR); git pull -q --rebase);\
 	else\
 		git clone $(VUNDLE_URL) $(VUNDLE_DIR);\
 	fi
