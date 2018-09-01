@@ -14,11 +14,11 @@ zstyle ':vcs_info:*:*' nvcsformats "%~" "" ""
 git_dirty() {
   command git rev-parse --is-inside-work-tree &>/dev/null || return
   command git diff --quiet --ignore-submodules HEAD &>/dev/null
-  if [ $? -eq 1 ]
+  if [ $? -eq 0 ]
   then
-    echo "%F{red}*%f"
-  else
     echo "%F{green}*%f"
+  else
+    echo "%F{red}*%f"
   fi
 }
 
