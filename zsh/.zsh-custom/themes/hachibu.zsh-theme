@@ -3,5 +3,5 @@
 setopt prompt_subst
 
 PROMPT="
-%F{blue}%n@%m%f %F{8}%d
-→ %f "
+%F{blue}%n@%m%f %F{8}%d%f
+%F{green}$%f "
