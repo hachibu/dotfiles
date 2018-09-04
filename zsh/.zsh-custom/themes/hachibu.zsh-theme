@@ -13,7 +13,7 @@ zstyle ':vcs_info:*:*' nvcsformats "%~" "" ""
 
 git_info() {
   vcs_info
-  print -P "%F{8}$vcs_info_msg_1_%f "
+  print -P "%F{8}${vcs_info_msg_0_%/.}/${vcs_info_msg_1_#git/}%f "
   command git rev-parse --is-inside-work-tree &>/dev/null || return
   command git diff --quiet --ignore-submodules HEAD &>/dev/null
   if [ $? -eq 0 ]
