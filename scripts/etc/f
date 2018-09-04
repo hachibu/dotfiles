@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+require 'strscan'
+
+def read_words(s)
+  words = []
+  ss = StringScanner.new(s)
+  until ss.eos?
+    ss.skip(/\s+/)
+    case
+    when w = ss.scan(/\d+\.\d+/)
+      words << w.to_f
+    when w = ss.scan(/\d+/)
+      words << w.to_i
+    when w = ss.scan(/[^\s]+/)
+      words << w.to_sym
+    end
+  end
+  words
+end
+
+def eval_words(words)
+  stack = []
+  words.each do |word|
+    case word
+    when :'.'
+      next if stack.empty?
+      puts stack.pop
+    when :+, :-, :*, :/, :%, :**
+      next if stack.size < 2
+      x, y = stack.pop(2)
+      stack << x.send(word, y)
+    when :sum
+       next if stack.size < 2
+       stack << stack.pop(stack.size).send(word)
+    else
+      stack << word
+    end
+  end
+end
+
+words = read_words(ARGV.join(' '))
+eval_words(words)
