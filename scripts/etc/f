@@ -1,43 +1,33 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env crystal
 
-require 'strscan'
+require "string_scanner"
 
-def read_words(s)
-  words = []
+# atom = integer
+#      | word (. : + - * /)
+#      | quote
+#      | type
+#
+# type = Int
+#      | Str
+#
+# [1 2 3] [dup *] map
+# 1 Int32 : 2 Int32 : + (Int32 -> Int32 -> Int32) :
+# typed calculator
+
+def read(s : String)
+  ws = [] of String
   ss = StringScanner.new(s)
   until ss.eos?
     ss.skip(/\s+/)
     case
-    when w = ss.scan(/\d+\.\d+/)
-      words << w.to_f
     when w = ss.scan(/\d+/)
-      words << w.to_i
-    when w = ss.scan(/[^\s]+/)
-      words << w.to_sym
-    end
-  end
-  words
-end
-
-def eval_words(words)
-  stack = []
-  words.each do |word|
-    case word
-    when :'.'
-      next if stack.empty?
-      puts stack.pop
-    when :+, :-, :*, :/, :%, :**
-      next if stack.size < 2
-      x, y = stack.pop(2)
-      stack << x.send(word, y)
-    when :sum
-       next if stack.size < 2
-       stack << stack.pop(stack.size).send(word)
+      ws << w
     else
-      stack << word
+      puts ss.inspect
+      break
     end
   end
+  ws
 end
 
-words = read_words(ARGV.join(' '))
-eval_words(words)
+p read(ARGV.first)
