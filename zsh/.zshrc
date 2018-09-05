@@ -2,7 +2,7 @@ ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="hachibu"
 
-plugins=(git heroku redis-cli yarn)
+plugins=(git heroku redis-cli yarn zsh_reload)
 
 source $ZSH/oh-my-zsh.sh
 
