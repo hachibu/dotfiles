@@ -2,32 +2,37 @@
 
 require "string_scanner"
 
-# atom = integer
-#      | word (. : + - * /)
-#      | quote
-#      | type
-#
-# type = Int
-#      | Str
-#
 # [1 2 3] [dup *] map
 # 1 Int32 : 2 Int32 : + (Int32 -> Int32 -> Int32) :
-# typed calculator
+
+def skip_ws(ss)
+  ss.skip(/\s+/)
+end
+
+def read_int(ss)
+  ss.scan(/\d+/)
+end
+
+def read_id(ss)
+  ss.scan(/[^\s\[\]\(\)\{\}]+/)
+end
 
 def read(s : String)
-  ws = [] of String
+  tokens = [] of String
   ss = StringScanner.new(s)
+
   until ss.eos?
-    ss.skip(/\s+/)
+    skip_ws(ss)
     case
-    when w = ss.scan(/\d+/)
-      ws << w
+    when token = read_int(ss) || read_id(ss)
+      tokens << token
     else
-      puts ss.inspect
-      break
+      raise "Reader error: Unreadable input: '#{ss.rest}'"
     end
+    skip_ws(ss)
   end
-  ws
+
+  tokens
 end
 
 p read(ARGV.first)
