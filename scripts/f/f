@@ -6,4 +6,4 @@ require "./reader"
 
 reader = Reader.new(ARGV.join(" "))
 
-puts reader.read
+pp reader.read

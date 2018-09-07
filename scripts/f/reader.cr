@@ -5,6 +5,7 @@ class Reader
   enum TokenType
     Identifier
     Integer
+    Module
     Operator
     Quote
   end
@@ -25,7 +26,7 @@ class Reader
       end
       skip_ws
     end
-    tokens
+    {TokenType::Module, tokens}
   end
 
   def error!(message)
