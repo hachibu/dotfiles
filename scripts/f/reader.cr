@@ -15,6 +15,10 @@ class Reader
     @scanner = StringScanner.new(input)
   end
 
+  def error!(message)
+    abort "Reader error: #{message}: '#{@scanner.rest}'"
+  end
+
   def read
     tokens = [] of Token
     until @scanner.eos?
@@ -29,10 +33,6 @@ class Reader
     {TokenType::Module, tokens}
   end
 
-  def error!(message)
-    abort "Reader error: #{message}: '#{@scanner.rest}'"
-  end
-
   def read_expr
     skip_ws
     read_op || read_id || read_int || read_quote
@@ -42,25 +42,15 @@ class Reader
     @scanner.skip(/\s+/)
   end
 
-  def read_op
-    if w = @scanner.scan(/\.|:|\+|-|\*|\/|%/)
-      {TokenType::Operator, w}
+  macro define_reader(name, type, pattern)
+    def read_{{name}}
+      if w = @scanner.scan({{pattern}})
+        Tuple.new({{type}}, w)
+      end
     end
   end
 
-  def read_id
-    if w = @scanner.scan(/[_a-zA-Z][_a-zA-Z0-9]*/)
-      {TokenType::Identifier, w}
-    end
-  end
-
-  def read_int
-    if w = @scanner.scan(/\d+/)
-      {TokenType::Integer, w.to_i}
-    end
-  end
-
-  macro define_nested_reader(name, opening, closing)
+  macro define_nested_reader(name, type, opening, closing)
     def read_{{name}}
       opening_re = Regex.new(Regex.escape({{opening}}))
       closing_re = Regex.new(Regex.escape({{closing}}))
@@ -73,7 +63,7 @@ class Reader
           end
         end
         if @scanner.scan(closing_re)
-          return {TokenType::Quote, tokens}
+          return Tuple.new({{type}}, tokens)
         else
           @scanner.offset = opening_offset
           error!("Unbalanced {{name}}")
@@ -82,5 +72,8 @@ class Reader
     end
   end
 
-  define_nested_reader(quote, "[", "]")
+  define_reader(op, TokenType::Operator, /\.|:|\+|-|\*|\/|%/)
+  define_reader(id, TokenType::Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
+  define_reader(int, TokenType::Integer, /\d+/)
+  define_nested_reader(quote, TokenType::Quote, "[", "]")
 end
