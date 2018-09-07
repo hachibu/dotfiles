@@ -1,7 +1,14 @@
 require "string_scanner"
 
 class Reader
-  alias Token = Int32 | String | Array(Token)
+  alias Token = Tuple(TokenType, TokenValue)
+  enum TokenType
+    Identifier
+    Integer
+    Operator
+    Quote
+  end
+  alias TokenValue = Int32 | String | Array(Token)
 
   def initialize(input : String)
     @scanner = StringScanner.new(input)
@@ -9,7 +16,6 @@ class Reader
 
   def read
     tokens = [] of Token
-
     until @scanner.eos?
       case
       when token = read_expr
@@ -19,7 +25,6 @@ class Reader
       end
       skip_ws
     end
-
     tokens
   end
 
@@ -37,16 +42,21 @@ class Reader
   end
 
   def read_op
-    @scanner.scan(/\.|:|\+|-|\*|\/|%/)
+    if w = @scanner.scan(/\.|:|\+|-|\*|\/|%/)
+      {TokenType::Operator, w}
+    end
   end
 
   def read_id
-    @scanner.scan(/[_a-zA-Z][_a-zA-Z0-9]*/)
+    if w = @scanner.scan(/[_a-zA-Z][_a-zA-Z0-9]*/)
+      {TokenType::Identifier, w}
+    end
   end
 
   def read_int
-    w = @scanner.scan(/\d+/)
-    w.to_i if w
+    if w = @scanner.scan(/\d+/)
+      {TokenType::Integer, w.to_i}
+    end
   end
 
   macro define_nested_reader(name, opening, closing)
@@ -62,7 +72,7 @@ class Reader
           end
         end
         if @scanner.scan(closing_re)
-          return tokens
+          return {TokenType::Quote, tokens}
         else
           @scanner.offset = opening_offset
           error!("Unbalanced {{name}}")
