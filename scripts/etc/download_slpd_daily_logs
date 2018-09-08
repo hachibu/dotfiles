@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require 'csv'
+require 'date'
+
+def date_range(days)
+  (0...days).map { |n| (Date.today - n).to_s }
+end
+
+def download_crime_logs(days)
+  dates = date_range(days)
+  dates.map do |date|
+    "https://ch-webext.sanleandro.org/coslintranet/PD/calls/#{date}.xls"
+  end
+end
+
+print 'downloading past 30 days...'
+download_crime_logs(30).each do |url|
+  system("wget -q -N --directory-prefix=slpd_daily_logs #{url}")
+  print '.'
+end
+puts 'done'
+
+print 'converting from xls to csv...'
+Dir["slpd_daily_logs/*.xls"].each do |xls|
+  csv = xls.sub('.xls', '.csv')
+  system("ssconvert #{xls} #{csv}") unless File.exist?(csv)
+  print '.'
+end
+puts 'done'
+
+headers = %w(callnumber logdate incident inctype address dispo narrative)
+
+print 'merging csv files...'
+CSV.open('slpd_daily_logs.csv','w') do |csv|
+  csv << headers
+  Dir["tmp/*.csv"].each do |f|
+    CSV.foreach(f, headers: true) do |row|
+      csv << row.values_at(*headers)
+    end
+    print '.'
+  end
+end
+puts 'done'
