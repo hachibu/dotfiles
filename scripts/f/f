@@ -1,9 +1,0 @@
-#!/usr/bin/env crystal
-
-# \[1 2 3] \[dup *] map
-
-require "./reader"
-
-reader = Reader.new(ARGV.join(" "))
-
-pp reader.read

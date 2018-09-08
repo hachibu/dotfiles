@@ -1,16 +1,6 @@
 require "string_scanner"
 
-class Reader
-  alias Token = Tuple(TokenType, TokenValue)
-  enum TokenType
-    Identifier
-    Integer
-    Module
-    Operator
-    Quote
-  end
-  alias TokenValue = Int32 | String | Array(Token)
-
+class Toy::Reader
   def initialize(input : String)
     @scanner = StringScanner.new(input)
   end
@@ -30,7 +20,7 @@ class Reader
       end
       skip_ws
     end
-    {TokenType::Module, tokens}
+    Token.new(Token::Type::Module, tokens)
   end
 
   def read_expr
@@ -42,10 +32,17 @@ class Reader
     @scanner.skip(/\s+/)
   end
 
-  macro define_reader(name, type, pattern)
+  macro define_reader(name, type, pattern, action = nil)
     def read_{{name}}
       if w = @scanner.scan({{pattern}})
-        Tuple.new({{type}}, w)
+        Token.new(
+          {{type}},
+          {% if action %}
+            w.{{action}}
+          {% else %}
+            w
+          {% end %}
+        )
       end
     end
   end
@@ -63,7 +60,7 @@ class Reader
           end
         end
         if @scanner.scan(closing_re)
-          return Tuple.new({{type}}, tokens)
+          return Token.new({{type}}, tokens)
         else
           @scanner.offset = opening_offset
           error!("Unbalanced {{name}}")
@@ -72,8 +69,8 @@ class Reader
     end
   end
 
-  define_reader(op, TokenType::Operator, /\.|:|\+|-|\*|\/|%/)
-  define_reader(id, TokenType::Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
-  define_reader(int, TokenType::Integer, /\d+/)
-  define_nested_reader(quote, TokenType::Quote, "[", "]")
+  define_reader(op, Token::Type::Operator, /\.|:|\+|-|\*|\/|%/)
+  define_reader(id, Token::Type::Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
+  define_reader(int, Token::Type::Integer, /\d+/, to_i)
+  define_nested_reader(quote, Token::Type::Quote, "[", "]")
 end
