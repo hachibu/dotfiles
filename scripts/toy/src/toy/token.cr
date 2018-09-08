@@ -7,7 +7,7 @@ class Toy::Token
     Quote
   end
 
-  alias Value = Int32 | String | Array(Token)
+  alias Value = Int32 | String | Array(Toy::Token)
 
   def initialize(@type : Type, @value : Value); end
 end
