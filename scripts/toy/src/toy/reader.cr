@@ -10,17 +10,17 @@ class Toy::Reader
   end
 
   def read
-    tokens = [] of Token
+    exprs = [] of Expr
     until @scanner.eos?
       case
-      when token = read_expr
-        tokens << token
+      when expr = read_expr
+        exprs << expr
       else
         error!("Unparsable input")
       end
       skip_ws
     end
-    Token.new(Token::Type::Module, tokens)
+    Expr.new(Expr::Type::Module, exprs)
   end
 
   def read_expr
@@ -35,7 +35,7 @@ class Toy::Reader
   macro define_reader(name, type, pattern, action = nil)
     def read_{{name}}
       if w = @scanner.scan({{pattern}})
-        Token.new(
+        Expr.new(
           {{type}},
           {% if action %}
             w.{{action}}
@@ -52,15 +52,15 @@ class Toy::Reader
       opening_re = Regex.new(Regex.escape({{opening}}))
       closing_re = Regex.new(Regex.escape({{closing}}))
       if @scanner.scan(opening_re)
-        tokens = [] of Token
+        exprs = [] of Expr
         opening_offset = @scanner.offset - 1
         until @scanner.peek(1) == {{closing}} || @scanner.eos?
-          if token = read_expr
-            tokens << token
+          if expr = read_expr
+            exprs << expr
           end
         end
         if @scanner.scan(closing_re)
-          return Token.new({{type}}, tokens)
+          return Expr.new({{type}}, exprs)
         else
           @scanner.offset = opening_offset
           error!("Unbalanced {{name}}")
@@ -69,8 +69,8 @@ class Toy::Reader
     end
   end
 
-  define_reader(op, Token::Type::Operator, /\.|:|\+|-|\*|\/|%/)
-  define_reader(id, Token::Type::Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
-  define_reader(int, Token::Type::Integer, /\d+/, to_i)
-  define_nested_reader(quote, Token::Type::Quote, "[", "]")
+  define_reader(op, Expr::Type::Operator, /\.|:|\+|-|\*|\/|%/)
+  define_reader(id, Expr::Type::Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
+  define_reader(int, Expr::Type::Integer, /\d+/, to_i)
+  define_nested_reader(quote, Expr::Type::Quote, "[", "]")
 end

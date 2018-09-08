@@ -1,4 +1,4 @@
-class Toy::Token
+class Toy::Expr
   enum Type
     Identifier
     Integer
@@ -7,7 +7,7 @@ class Toy::Token
     Quote
   end
 
-  alias Value = Int32 | String | Array(Toy::Token)
+  alias Value = Int32 | String | Array(Expr)
 
   def initialize(@type : Type, @value : Value); end
 end
