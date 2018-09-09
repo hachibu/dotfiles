@@ -5,7 +5,7 @@ module Toy::Syntax
     property value
 
     def pretty_print(level = 0)
-      indent = "    " * level
+      indent = "  " * level
       o_paren = "(".colorize.cyan
       c_paren = ")".colorize.cyan
       o_bracket = "[".colorize.green
@@ -21,7 +21,7 @@ module Toy::Syntax
         puts "#{self.value.colorize(e_value_color)}#{c_paren}"
       when Toy::Syntax::Operator
         puts "#{self.value.colorize(e_value_color)}#{c_paren}"
-      when Toy::Syntax::Quote
+      when Toy::Syntax::Module, Toy::Syntax::Quote
         puts o_bracket
         self.value.each { |e| e.pretty_print(level + 1) }
         puts "#{indent}#{c_bracket}#{c_paren}"
@@ -35,6 +35,10 @@ module Toy::Syntax
 
   class Integer < Expr
     def initialize(@value : Int32); end
+  end
+
+  class Module < Expr
+    def initialize(@value : Array(Expr)); end
   end
 
   class Operator < Expr
