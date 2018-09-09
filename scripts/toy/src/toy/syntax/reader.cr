@@ -1,6 +1,6 @@
 require "string_scanner"
 
-class Toy::Reader
+class Toy::Syntax::Reader
   def initialize(input : String)
     @scanner = StringScanner.new(input)
   end
@@ -14,7 +14,7 @@ class Toy::Reader
         error!("Unparsable input")
       end
     end
-    Expr.new(Expr::Type::Module, exprs)
+    Quote.new(exprs)
   end
 
   def read_expr : Expr?
@@ -24,8 +24,7 @@ class Toy::Reader
   macro define_reader(name, type, pattern, action = nil)
     def read_{{name}} : Expr?
       if w = @scanner.scan({{pattern}})
-        Expr.new(
-          {{type}},
+        {{type}}.new(
           {% if action %}
             w.{{action}}
           {% else %}
@@ -49,7 +48,7 @@ class Toy::Reader
           end
         end
         if @scanner.scan(closing_re)
-          return Expr.new({{type}}, exprs)
+          return {{type}}.new(exprs)
         else
           @scanner.offset = opening_offset
           error!("Unbalanced {{name}}")
@@ -58,10 +57,10 @@ class Toy::Reader
     end
   end
 
-  define_reader(op, Expr::Type::Operator, /\.|:|\+|-|\*|\/|%/)
-  define_reader(id, Expr::Type::Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
-  define_reader(int, Expr::Type::Integer, /\d+/, to_i)
-  define_nested_reader(quote, Expr::Type::Quote, "[", "]")
+  define_reader(op, Operator, /\.|:|\+|-|\*|\/|%/)
+  define_reader(id, Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
+  define_reader(int, Integer, /\d+/, to_i)
+  define_nested_reader(quote, Quote, "[", "]")
 
   def skip_whitespace : Expr?
     @scanner.skip(/\s+/)

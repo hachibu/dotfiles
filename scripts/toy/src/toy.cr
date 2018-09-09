@@ -1,5 +1,6 @@
-require "./toy/*"
+require "./toy/syntax/*"
 
-reader = Toy::Reader.new(ARGV.join(" "))
+reader = Toy::Syntax::Reader.new(ARGV.join(" "))
+expr = reader.read
 
-pp reader.read
+expr.pretty_print
