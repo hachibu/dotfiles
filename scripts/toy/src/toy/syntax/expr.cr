@@ -3,7 +3,7 @@ require "colorize"
 module Toy::Syntax
   class Expr
     macro subclass(name, value_type)
-      class Toy::Syntax::{{name}} < Toy::Syntax::Expr
+      class {{name}} < Expr
         property value : {{value_type}}
         def initialize(@value : {{value_type}}); end
       end
@@ -40,8 +40,8 @@ module Toy::Syntax
   end
 
   Expr.subclass(Identifier, String)
-  Expr.subclass(Integer,    Int32)
-  Expr.subclass(Module,     Array(Expr))
-  Expr.subclass(Operator,   String)
-  Expr.subclass(Quote,      Array(Expr))
+  Expr.subclass(Integer, Int32)
+  Expr.subclass(Module, Array(Expr))
+  Expr.subclass(Operator, String)
+  Expr.subclass(Quote, Array(Expr))
 end
