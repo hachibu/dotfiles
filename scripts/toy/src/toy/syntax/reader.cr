@@ -12,7 +12,7 @@ class Toy::Syntax::Reader
         if expr = read_expr
           exprs << expr
         else
-          error!("Unparsable input")
+          error!("#read: Unparsable input")
         end
       end
       Module.new(exprs)
@@ -53,15 +53,15 @@ class Toy::Syntax::Reader
           return {{type}}.new(exprs)
         else
           @scanner.offset = opening_offset
-          error!("Unbalanced {{name}}")
+          error!("#read_{{name}}: Unbalanced {{name}}")
         end
       end
     end
   end
 
-  define_reader(op, Operator, /\.|:|\+|-|\*|\/|%/)
   define_reader(id, Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
   define_reader(int, Integer, /\d+/, to_i)
+  define_reader(op, Operator, /\.|:|\+|-|\*|\/|%/)
   define_nested_reader(quote, Quote, "[", "]")
 
   def skip_whitespace : Expr?
@@ -72,6 +72,6 @@ class Toy::Syntax::Reader
   end
 
   def error!(message) : NoReturn
-    abort "Reader error: #{message}: '#{@scanner.rest}'"
+    abort "#{self.class}: #{message}: \"#{@scanner.rest}\""
   end
 end
