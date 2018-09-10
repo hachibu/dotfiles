@@ -5,16 +5,18 @@ class Toy::Syntax::Reader
     @scanner = StringScanner.new(input)
   end
 
-  def read : Expr
-    exprs = [] of Expr
-    until @scanner.eos?
-      if expr = read_expr
-        exprs << expr
-      else
-        error!("Unparsable input")
+  def read : Expr?
+    unless @scanner.eos?
+      exprs = [] of Expr
+      until @scanner.eos?
+        if expr = read_expr
+          exprs << expr
+        else
+          error!("Unparsable input")
+        end
       end
+      Module.new(exprs)
     end
-    Module.new(exprs)
   end
 
   def read_expr : Expr?
