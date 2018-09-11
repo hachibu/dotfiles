@@ -51,7 +51,7 @@ module Toy::Syntax
           error!("#read: Unparsable input")
         end
       end
-      Module.new(exprs)
+      Quote.new(exprs)
     end
 
     def read_expr : Expr?

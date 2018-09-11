@@ -29,7 +29,7 @@ module Toy::Syntax
           if responds_to?(:value)
             printer.text(self.value.colorize(color[:value]))
           end
-        when Module, Quote
+        when Quote
           printer.surround(l_brack, r_brack, "", nil) do
             printer.list(nil, self.value, nil)
           end
@@ -46,7 +46,6 @@ module Toy::Syntax
 
   Expr.subclass(Identifier, String)
   Expr.subclass(Integer, Int32)
-  Expr.subclass(Module, Array(Expr))
   Expr.subclass(Operator, String)
   Expr.subclass(Quote, Array(Expr))
 end
