@@ -4,6 +4,10 @@ module Toy::Syntax
   class Reader
     getter scanner : StringScanner
 
+    def initialize(input : String)
+      @scanner = StringScanner.new(input)
+    end
+
     macro define_reader(type, pattern, action = nil)
       def read_{{type}} : Expr?
         if v = scanner.scan({{pattern}})
@@ -12,18 +16,21 @@ module Toy::Syntax
       end
     end
 
-    macro define_reader_nested(type, opening, closing)
+    macro define_nested_reader(type, opening, closing)
       def read_{{type}} : Expr?
         opening_re = Regex.new(Regex.escape({{opening}}))
         closing_re = Regex.new(Regex.escape({{closing}}))
+
         if scanner.scan(opening_re)
           exprs = [] of Expr
           opening_offset = scanner.offset - 1
+
           until scanner.peek(1) == {{closing}} || scanner.eos?
             if expr = read_expr
               exprs << expr
             end
           end
+
           if scanner.scan(closing_re)
             return {{type}}.new(exprs)
           else
@@ -32,14 +39,6 @@ module Toy::Syntax
           end
         end
       end
-    end
-
-    def initialize(input : String)
-      @scanner = StringScanner.new(input)
-    end
-
-    def error!(message) : NoReturn
-      abort "#{self.class}: #{message}: \"#{scanner.rest}\""
     end
 
     def read : Expr?
@@ -65,6 +64,10 @@ module Toy::Syntax
     define_reader(Identifier, /[_a-zA-Z][_a-zA-Z0-9]*/)
     define_reader(Integer, /\d+/, to_i)
     define_reader(Operator, /\.|:|\+|-|\*|\/|%/)
-    define_reader_nested(Quote, "[", "]")
+    define_nested_reader(Quote, "[", "]")
+
+    private def error!(message) : NoReturn
+      abort "#{self.class}: #{message}: \"#{scanner.rest}\""
+    end
   end
 end
