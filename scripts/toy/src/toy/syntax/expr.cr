@@ -5,33 +5,38 @@ module Toy::Syntax
     macro subclass(name, value_type)
       class {{name}} < Expr
         property value : {{value_type}}
-        def initialize(@value : {{value_type}}); end
+
+        def initialize(@value : {{value_type}});end
       end
     end
 
     def pretty_print(printer)
-      type_color, value_color = [:yellow, :magenta]
-      brack_color, paren_color = [:green, :cyan]
+      color = {
+        value_type: :yellow,
+        value: :magenta,
+        brack: :green,
+        paren: :cyan
+      }
+      l_paren, r_paren = "()".split("").map { |s| s.colorize(color[:paren]) }
+      l_brack, r_brack = "[]".split("").map { |s| s.colorize(color[:brack]) }
 
-      printer.surround("(".colorize(paren_color), ")".colorize(paren_color), nil, nil) do
-        printer.text("#{self.base_class.colorize(type_color)} ")
+      printer.surround(l_paren, r_paren, nil, nil) do
+        printer.text(
+          "#{self.class.to_s.split("::").last.colorize(color[:value_type])} "
+        )
         case self
         when Identifier, Integer, Operator
-          if self.responds_to?(:value)
-            printer.text(self.value.colorize(value_color))
+          if responds_to?(:value)
+            printer.text(self.value.colorize(color[:value]))
           end
         when Module, Quote
-          printer.surround("[".colorize(brack_color), "]".colorize(brack_color), "", nil) do
+          printer.surround(l_brack, r_brack, "", nil) do
             printer.list(nil, self.value, nil)
           end
         else
           error!("#pretty_print: Unhandled case.")
         end
       end
-    end
-
-    private def base_class
-      self.class.to_s.sub("Toy::Syntax::", "")
     end
 
     private def error!(message) : NoReturn
