@@ -40,7 +40,7 @@ module Toy::Syntax
     end
 
     private def error!(message) : NoReturn
-      abort "#{self.class}: #{message}"
+      raise "#{self.class}: #{message}"
     end
   end
 

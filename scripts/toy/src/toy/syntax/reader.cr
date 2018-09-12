@@ -67,7 +67,7 @@ module Toy::Syntax
     define_nested_reader(Quote, "[", "]")
 
     private def error!(message) : NoReturn
-      abort "#{self.class}: #{message}: \"#{scanner.rest}\""
+      raise "#{self.class}: #{message}: \"#{scanner.rest}\""
     end
   end
 end
