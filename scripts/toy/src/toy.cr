@@ -1,11 +1,3 @@
-require "readline"
-require "colorize"
-require "./toy/syntax/*"
+require "./toy/*"
 
-loop do
-  next unless input = Readline.readline(">> ", true)
-  next unless expr = Toy::Syntax::Reader.new(input).read
-  pp expr.value
-rescue error
-  puts error.colorize.red
-end
+Toy::Interpreter.new.start
