@@ -11,6 +11,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'rhysd/vim-crystal'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
