@@ -46,5 +46,5 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-let g:ctrlp_custom_ignore = {'dir': '\v[\/](tmp|node_modules)', 'file': '\v\.(exe|so|dll)$'}
+let g:ctrlp_custom_ignore = {'dir': '\v[\/](tmp|node_modules|target)', 'file': '\v\.(exe|so|dll)$'}
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empty', 'discarding unexpected', 'is not recognized!', 'invalid value']
