@@ -40,12 +40,20 @@ alias gfp="gfa && gup"
 alias gp!="gp -f"
 alias rake="bundle exec rake"
 alias rails="foreman run rails"
+alias rspec="bundle exec rspec --color"
 alias tree="tree -C -I 'node_modules|target'"
 alias vimrc="vim $HOME/.vimrc"
 alias ws="svscan $HOME/Code/Wootric/services/wootric-services"
 alias wpr="github-pull-requests wootric"
 alias wprp="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
 alias zshrc="vim $HOME/.zshrc"
+
+# Functions
+function git-root() {
+  while [ ! -d ".git" ]; do
+    cd ..
+  done
+}
 
 # Initializers
 if [ -x "$(command -v rbenv)" ]; then
