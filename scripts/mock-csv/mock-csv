@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative './lib/mock_csv'
+
+return if ARGV.empty?
+
+csv = MockCsv.new(ARGV)
+
+puts csv.headers
+puts csv.rows(10)
