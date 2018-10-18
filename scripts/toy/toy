@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-crystal run "${0%$(basename "$0")}src/toy.cr" -- "$@"
