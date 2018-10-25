@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -o xtrace
+
 brew update
 brew prune
 brew cleanup --prune=1
