@@ -2,8 +2,8 @@
 
 set -o xtrace
 
-brew update
 brew prune
 brew cleanup --prune=1
-brew doctor
+brew update
 brew missing
+brew doctor
