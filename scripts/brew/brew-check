@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-set -o xtrace
-
-brew update --force
-brew prune
-brew cleanup --prune=0
+brew update --force > /dev/null
+brew prune > /dev/null
+brew cleanup --prune=0 > /dev/null
 brew missing
 brew doctor
