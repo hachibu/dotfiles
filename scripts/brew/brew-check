@@ -1,7 +1,16 @@
-#!/usr/bin/env bash
+#!/usr/bin/env crystal
 
-brew update --force > /dev/null
-brew prune > /dev/null
-brew cleanup --prune=0 > /dev/null
-brew missing
-brew doctor
+require "colorize"
+
+cmds = [
+  "update --force",
+  "prune",
+  "cleanup --prune=0",
+  "missing",
+  "doctor"
+].map { |s| s.insert(0, "brew ") }
+
+cmds.each do |cmd|
+  puts "==> ".colorize.blue.to_s + cmd
+  system(cmd)
+end
