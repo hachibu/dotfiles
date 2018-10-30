@@ -23,6 +23,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   done
 fi
 
+export LIBRARY_PATH=/usr/local/opt/openssl/lib
+
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
   for DIR in $SCRIPTS_PATH/*; do
