@@ -57,7 +57,13 @@ function git-root() {
   done
 }
 
+function truncate-history() {
+  echo "$(tail -n 1000 $HISTFILE)" > $HISTFILE
+}
+
 # Initializers
 if [ -x "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
 fi
+
+truncate-history
