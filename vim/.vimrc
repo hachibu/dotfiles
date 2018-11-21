@@ -14,6 +14,7 @@ Plugin 'rhysd/vim-crystal'
 Plugin 'rust-lang/rust.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'jdonaldson/vaxe'
 
 call vundle#end()
 filetype plugin indent on

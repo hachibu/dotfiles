@@ -13,6 +13,8 @@ else
   touch $SECRETS_PATH
 fi
 
+HAXE_STD_PATH="/usr/local/lib/haxe/std"
+
 # Path
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
