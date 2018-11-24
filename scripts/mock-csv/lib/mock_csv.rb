@@ -4,7 +4,7 @@ class MockCsv
   attr_reader :mock_vars
 
   def initialize(args)
-    @mock_vars = args.map { |arg| MockVar.new(*arg.split(':')) }
+    @mock_vars = args.map { |a| MockVar.new(*a.split(':')) }
   end
 
   def headers

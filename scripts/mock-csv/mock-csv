@@ -1,10 +1,16 @@
 #!/usr/bin/env ruby
 
+require 'colorize'
 require_relative './lib/mock_csv'
 
-return if ARGV.empty?
+if ARGV.empty?
+  abort "Error: Missing arguments".red
+end
 
-csv = MockCsv.new(ARGV)
-
-puts csv.headers
-puts csv.rows(10)
+begin
+  csv = MockCsv.new(ARGV)
+  puts csv.headers
+  puts csv.rows(10)
+rescue MockCsvError => e
+  puts "Error: #{e.message}".red
+end
