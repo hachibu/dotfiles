@@ -13,7 +13,8 @@ else
   touch $SECRETS_PATH
 fi
 
-HAXE_STD_PATH="/usr/local/lib/haxe/std"
+# Exports
+export LIBRARY_PATH=/usr/local/opt/openssl/lib
 
 # Path
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -24,8 +25,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
   done
 fi
-
-export LIBRARY_PATH=/usr/local/opt/openssl/lib
 
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
