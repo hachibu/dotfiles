@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+def brew_uninstall(formula)
+  system("brew uninstall -f #{formula}")
+end
+
+def main
+  formula = ARGV.first
+  formula_deps = `brew deps #{formula}`.split("\n")
+
+  brew_uninstall(formula)
+
+  formula_deps.each do |formula_dep|
+    brew_uninstall(formula_dep)
+  end
+end
+
+main
