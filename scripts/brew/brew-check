@@ -2,15 +2,17 @@
 
 require "colorize"
 
-cmds = [
-  "update --force",
-  "prune",
-  "cleanup --prune=0",
-  "missing",
-  "doctor"
-].map { |s| s.insert(0, "brew ") }
-
-cmds.each do |cmd|
-  puts "==> ".colorize.blue.to_s + cmd
-  system(cmd)
+run_cmd = ->(cmd : String) do
+  puts "#{"==>".colorize.blue} #{cmd}"
+  system(cmd) || abort(cmd)
 end
+
+cmds = [
+  "brew update --force",
+  "brew prune",
+  "brew cleanup --prune=1",
+  "brew missing",
+  "brew doctor"
+]
+
+cmds.each(&run_cmd)
