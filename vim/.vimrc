@@ -12,10 +12,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'rhysd/vim-crystal'
 Plugin 'rust-lang/rust.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'jdonaldson/vaxe'
-Plugin 'gisraptor/vim-lilypond-integrator'
 
 call vundle#end()
 filetype plugin indent on
