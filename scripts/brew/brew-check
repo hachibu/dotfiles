@@ -2,17 +2,9 @@
 
 require "colorize"
 
-run_cmd = ->(cmd : String) do
-  puts "#{"==>".colorize.blue} #{cmd}"
-  system(cmd) || abort(cmd)
+brew = ->(cmd : String) do
+  puts("#{"==>".colorize.blue} brew #{cmd}")
+  system("brew #{cmd} > /dev/null")
 end
 
-cmds = [
-  "brew update --force",
-  "brew prune",
-  "brew cleanup --prune=1",
-  "brew missing",
-  "brew doctor"
-]
-
-cmds.each(&run_cmd)
+%w(update prune cleanup missing doctor).each(&brew)
