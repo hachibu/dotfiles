@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require 'json'
+
+def parse_semver(semver_str)
+  semver_str.split('.').map(&:to_i)
+end
+
+package_json = JSON.parse(File.read('package.json'))
+lines = `yarn outdated --json`.split("\n")
+
+exit if lines.count < 2
+
+changes = JSON.parse(lines[1]).dig('data', 'body')
+
+changes.each do |change|
+  package, current, _, latest, package_type = change
+
+  current_semver = parse_semver(current)
+  latest_semver = parse_semver(latest)
+
+  semver = if latest_semver[0] > current_semver[0]
+             :major
+           elsif latest_semver[1] > current_semver[1]
+             :minor
+           elsif latest_semver[2] > current_semver[2]
+             :patch
+           end
+
+  print "#{semver}: #{package_type}: #{package}: #{current} > #{latest}? [y/N] "
+  answer = gets.chomp.downcase
+  upgrade = answer == 'y' || answer == 'yes'
+  next unless upgrade
+  package_json[package_type][package] = latest
+end
+
+File.write('package.json', JSON.pretty_generate(package_json) + "\n")
