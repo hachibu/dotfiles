@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+require 'colorize'
+require 'English'
+require 'json'
+
+def parse_semver(semver_str)
+  semver_str.split('.').map(&:to_i)
+end
+
+def get_semver_type(old_semver, new_semver)
+  3.times do |n|
+    if new_semver.fetch(n) > old_semver.fetch(n)
+      return %i(major minor patch).fetch(n)
+    end
+  end
+end
+
+def get_semver_type_color(semver)
+  { major: :red, minor: :yellow, patch: :green }.fetch(semver)
+end
+
+def program_exists?(program)
+  system("which #{program} > /dev/null")
+  $CHILD_STATUS.success?
+end
+
+exit(1) unless program_exists?('yarn')
+exit(1) unless File.exist?('package.json')
+
+package_json = JSON.parse(File.read('package.json'))
+json_lines = `yarn outdated --json`.split("\n").map do |jl|
+  JSON.parse(jl)
+end
+
+exit(1) unless json_lines.count > 1
+
+package_json_updated = false
+outdated_packages = json_lines.dig(1, 'data', 'body')
+
+outdated_packages.each do |package, current, _, latest, package_type|
+  old_semver = parse_semver(current)
+  new_semver = parse_semver(latest)
+  semver_type = get_semver_type(old_semver, new_semver)
+  semver_type_color = get_semver_type_color(semver_type)
+
+  print "#{package.colorize(semver_type_color)} #{current} #{latest.colorize(:cyan)}? "
+  answer = gets.chomp.downcase
+
+  next unless answer == 'y' || answer == 'yes'
+
+  package_json[package_type][package] = latest
+  package_json_updated = true
+end
+
+if package_json_updated
+  File.write('package.json', JSON.pretty_generate(package_json) + "\n")
+end
