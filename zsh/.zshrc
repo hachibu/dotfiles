@@ -34,6 +34,7 @@ if [ -d $SCRIPTS_PATH ]; then
 fi
 
 # Aliases
+alias mock-cxi-csv="mock-csv feedback:quote feedback_date:time user_id:email"
 alias gc="git commit"
 alias gc!="git commit --amend"
 alias gas=" cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh | grep alias | less"
