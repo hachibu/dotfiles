@@ -10,7 +10,7 @@ end
 begin
   csv = MockCsv.new(ARGV)
   puts csv.headers
-  puts csv.rows(10)
+  puts csv.rows(1000)
 rescue MockCsvError => e
   puts "Error: #{e.message}".red
 end
