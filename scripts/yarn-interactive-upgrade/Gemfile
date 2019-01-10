@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+ruby '2.5.1'
+
+gem 'awesome_print'
+gem 'colorize'
+gem 'highline'
+gem 'jsonl'
+gem 'semantic'

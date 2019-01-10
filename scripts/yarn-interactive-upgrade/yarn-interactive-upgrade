@@ -1,58 +1,45 @@
 #!/usr/bin/env ruby
 
 require 'colorize'
-require 'English'
 require 'json'
-
-def parse_semver(semver_str)
-  semver_str.split('.').map(&:to_i)
-end
-
-def get_semver_type(old_semver, new_semver)
-  3.times do |n|
-    if new_semver.fetch(n) > old_semver.fetch(n)
-      return %i(major minor patch).fetch(n)
-    end
-  end
-end
-
-def get_semver_type_color(semver)
-  { major: :red, minor: :yellow, patch: :green }.fetch(semver)
-end
-
-def program_exists?(program)
-  system("which #{program} > /dev/null")
-  $CHILD_STATUS.success?
-end
-
-exit(1) unless program_exists?('yarn')
-exit(1) unless File.exist?('package.json')
+require 'jsonl'
+require 'highline'
+require 'semantic'
 
 package_json = JSON.parse(File.read('package.json'))
-json_lines = `yarn outdated --json`.split("\n").map do |jl|
-  JSON.parse(jl)
-end
+yarn_outdated = JSONL.parse(`yarn outdated --json`)
 
-exit(1) unless json_lines.count > 1
+exit(1) if yarn_outdated.count < 2
 
-package_json_updated = false
-outdated_packages = json_lines.dig(1, 'data', 'body')
+packages_updated = 0
+outdated_packages = yarn_outdated.dig(1, 'data', 'body')
 
 outdated_packages.each do |package, current, _, latest, package_type|
-  old_semver = parse_semver(current)
-  new_semver = parse_semver(latest)
-  semver_type = get_semver_type(old_semver, new_semver)
-  semver_type_color = get_semver_type_color(semver_type)
+  old_semver = Semantic::Version.new(current)
+  new_semver = Semantic::Version.new(latest)
+  semver_type =
+    if new_semver.major > old_semver.major
+      :major
+    elsif new_semver.minor > old_semver.minor
+      :minor
+    elsif new_semver.patch > old_semver.patch
+      :patch
+    end
+  semver_type_color = {
+    major: :red,
+    minor: :yellow,
+    patch: :green
+   }.fetch(semver_type)
 
-  print "#{package.colorize(semver_type_color)} #{current} #{latest.colorize(:cyan)}? "
-  answer = gets.chomp.downcase
-
-  next unless answer == 'y' || answer == 'yes'
+  answer = HighLine.agree(
+    "#{package.colorize(semver_type_color)} #{current} > #{latest} ? "
+  )
+  next unless answer
 
   package_json[package_type][package] = latest
-  package_json_updated = true
+  packages_updated += 1
 end
 
-if package_json_updated
+if packages_updated > 0
   File.write('package.json', JSON.pretty_generate(package_json) + "\n")
 end
