@@ -1,7 +1,13 @@
 #!/usr/bin/env ruby
 
+# brew install gnumeric
+
 require 'csv'
 require 'date'
+
+def system!(command)
+  system(command) || fail(command)
+end
 
 def date_range(days)
   (0...days).map { |n| (Date.today - n).to_s }
@@ -11,7 +17,7 @@ def download(days:, directory:)
   date_range(days).map do |date|
     url = "https://ch-webext.sanleandro.org/coslintranet/PD/calls/#{date}.xls"
     yield url if block_given?
-    system("wget -q -N --directory-prefix=#{directory} #{url}")
+    system!("wget -q -N --directory-prefix=#{directory} #{url}")
   end
 end
 
@@ -20,7 +26,7 @@ def convert(files:)
     csv = xls.sub('.xls', '.csv')
     yield xls, csv if block_given?
     next if File.exist?(csv)
-    system("ssconvert #{xls} #{csv}")
+    system!("ssconvert #{xls} #{csv}")
   end
 end
 
@@ -38,7 +44,7 @@ end
 if $PROGRAM_NAME == __FILE__
   dir = 'slpd_logs'
 
-  download(days: 2, directory: dir) do |url|
+  download(days: 7, directory: dir) do |url|
     puts "downloading #{url}"
   end
 
