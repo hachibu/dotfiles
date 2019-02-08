@@ -34,7 +34,7 @@ if [ -d $SCRIPTS_PATH ]; then
 fi
 
 # Aliases
-alias mock-cxi-csv="mock-csv feedback:quote feedback_date:time user_id:email"
+alias fs="bundle exec foreman start"
 alias gc="git commit"
 alias gc!="git commit --amend"
 alias gas=" cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh | grep alias | less"
@@ -42,6 +42,7 @@ alias gbd!="git branch -D"
 alias gce="git config --edit --global"
 alias gfp="gfa && gup"
 alias gp!="gp -f"
+alias mock-cxi-csv="mock-csv feedback:quote feedback_date:time user_id:email"
 alias rake="bundle exec rake"
 alias rbenv-gcc="CC=/usr/bin/gcc rbenv"
 alias rails="foreman run rails"
