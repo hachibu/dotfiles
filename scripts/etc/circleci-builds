@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+curl -s "https://circleci.com/api/v1.1/me?circle-token=$CIRCLECI_AUTH_TOKEN" > /dev/null
+curl -s "https://circleci.com/api/v1.1/recent-builds?circle-token=$CIRCLECI_AUTH_TOKEN&limit=5" |\
+  jq "[.[] | {\
+    author_name: .author_name,\
+    reponame: .reponame,\
+    branch: .branch,\
+    status: .status,\
+    subject: .all_commit_details[0].subject\
+  }]"

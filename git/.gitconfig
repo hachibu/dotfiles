@@ -20,3 +20,6 @@
 
 [push]
   default = current
+
+[alias]
+  fix = commit -a --amend --cleanup=strip -C HEAD
