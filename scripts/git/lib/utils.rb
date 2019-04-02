@@ -17,10 +17,14 @@ def git(*commands)
   end
 end
 
+def git_branch
+  `git rev-parse --abbrev-ref HEAD`.strip
+end
+
 def git_repo?
   Dir.exist?('.git')
 end
 
-def git_branch
-  `git rev-parse --abbrev-ref HEAD`.strip
+def check_git_repo!
+  error('Not a git repository.') unless git_repo?
 end

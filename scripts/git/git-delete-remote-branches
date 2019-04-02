@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require_relative 'lib/utils'
+
+check_git_repo!
+
+`git fetch --all --prune`
+
+branches_to_delete = []
+branches = `git branch --remote`.split("\n").map(&:strip)
+
+branches.each do |branch|
+  next if branch.include?('master')
+
+  if branch.start_with?(ARGV.first)
+    branches_to_delete << branch.split('/')
+  end
+end
+
+branches_to_delete.each do |remote, branch|
+  system(`git push --delete #{remote} #{branch}`)
+end
