@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-ROOT_DIR="~/.notes"
-FILE="$ROOT_DIR/$(date "+%Y-%m-%d").md"
-
-mkdir -p $ROOT_DIR
-vim $FILE
