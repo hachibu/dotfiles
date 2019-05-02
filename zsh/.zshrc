@@ -26,8 +26,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   done
 fi
 
-PATH="/usr/local/opt/node@10/bin:$PATH"
-
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
   for DIR in $SCRIPTS_PATH/*; do
