@@ -2,8 +2,16 @@
 
 require "colorize"
 
-%w(update cleanup missing doctor).each do |cmd|
-  brew_cmd = "brew #{cmd}"
-  puts("#{"==>".colorize.blue} #{brew_cmd}")
-  system(brew_cmd)
+exec_command = ->(command : String) do
+  puts("#{"==>".colorize.blue} #{command}")
+  system(command)
 end
+
+commands = [
+  "brew update",
+  "brew cleanup -s",
+  "brew missing",
+  "brew doctor"
+]
+
+commands.each(&exec_command)
