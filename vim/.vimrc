@@ -13,6 +13,7 @@ Plugin 'isRuslan/vim-es6'
 Plugin 'rhysd/vim-crystal'
 Plugin 'rust-lang/rust.vim'
 Plugin 'rking/ag.vim'
+Plugin 'cespare/vim-toml'
 
 call vundle#end()
 filetype plugin indent on
