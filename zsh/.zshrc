@@ -14,7 +14,9 @@ else
 fi
 
 # Exports
-export LIBRARY_PATH=/usr/local/opt/openssl/lib
+export LIBRARY_PATH="/usr/local/opt/openssl/lib"
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 # Path
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
