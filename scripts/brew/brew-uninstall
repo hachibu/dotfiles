@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 def brew_uninstall(formula)
-  system("brew uninstall -f #{formula}")
+  system("brew uninstall #{formula}")
 end
 
 def main
