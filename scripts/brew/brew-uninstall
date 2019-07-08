@@ -1,7 +1,23 @@
 #!/usr/bin/env ruby
 
+require 'open3'
+
 def brew_uninstall(formula)
-  system("brew uninstall #{formula}")
+  command = "brew uninstall #{formula}"
+  stdout, stderr, status = Open3.capture3(command)
+
+  if status.exitstatus == 0
+    puts stdout
+  else
+    case stderr
+    when /no such keg/i
+      return
+    when /refusing to uninstall/i
+      puts stderr.split("\n").first
+    else
+      puts stderr
+    end
+  end
 end
 
 def main
