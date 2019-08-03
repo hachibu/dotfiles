@@ -28,6 +28,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   done
 fi
 
+PATH="$HOME/Library/Python/3.7/bin:$PATH"
+
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
   for DIR in $SCRIPTS_PATH/*; do
