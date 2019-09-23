@@ -73,6 +73,10 @@ function truncate-history() {
   echo "$(tail -n 1000 $HISTFILE)" > $HISTFILE
 }
 
+function remove-postmaster-pid() {
+  rm -rf "/usr/local/var/postgresql@9.6/postmaster.pid"
+}
+
 # Initializers
 if [ -x "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
