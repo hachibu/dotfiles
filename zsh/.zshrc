@@ -19,7 +19,7 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
 # Path
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   PATH="/usr/local/bin:$PATH"
