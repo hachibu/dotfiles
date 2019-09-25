@@ -31,7 +31,7 @@ end
 error("No pull requests found.") if pull_requests.empty?
 
 parsed_pull_requests = pull_requests.map do |pr|
-  open_days = (Time.now - pr.created_at).to_i / 86_400
+  open_days = (Time.utc - pr.created_at).to_i / 86_400
   open_suffix = open_days == 1 ? "day" : "days"
   {
     user_login: pr.user.login,
