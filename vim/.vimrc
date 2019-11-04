@@ -30,6 +30,7 @@ set list
 set listchars=trail:~
 set mouse=a
 set nofoldenable
+set noswapfile
 set nowrap
 set number
 set shiftwidth=2
