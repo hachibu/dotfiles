@@ -42,6 +42,8 @@ set title
 set updatetime=500
 set wildmode=list:longest,list:full
 
+autocmd FileType Markdown setlocal spell
+
 highlight LineNr ctermfg=grey
 
 nnoremap <C-J> <C-W><C-J>
