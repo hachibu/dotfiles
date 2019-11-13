@@ -14,6 +14,7 @@ Plugin 'rhysd/vim-crystal'
 Plugin 'rust-lang/rust.vim'
 Plugin 'rking/ag.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 filetype plugin indent on
