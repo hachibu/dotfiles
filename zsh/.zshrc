@@ -17,6 +17,7 @@ fi
 export LIBRARY_PATH="/usr/local/opt/openssl/lib"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
+export EDITOR="vim"
 
 # Path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -86,3 +87,5 @@ if [ -x "$(command -v rbenv)" ]; then
 fi
 
 truncate-history
+
+source /Users/rs/Library/Preferences/org.dystroy.broot/launcher/bash/br
