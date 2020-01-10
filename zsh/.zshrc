@@ -62,8 +62,8 @@ alias t="todo.sh"
 alias tree="tree -a -C -I 'node_modules|target|.git|.vim'"
 alias vimrc="vim $HOME/.vimrc"
 alias ws="svscan $HOME/Code/Wootric/services/wootric-services"
-alias wpr="github-pull-requests wootric"
-alias wprp="github-pull-requests wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
+alias wpr="github-pull-requests.rb Wootric"
+alias wprp="github-pull-requests.rb Wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
 alias zshrc="vim $HOME/.zshrc"
 
 # Functions
