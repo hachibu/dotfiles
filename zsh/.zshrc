@@ -88,4 +88,4 @@ fi
 
 truncate-history
 
-source /Users/rs/Library/Preferences/org.dystroy.broot/launcher/bash/br
+source /Users/$USER/Library/Preferences/org.dystroy.broot/launcher/bash/br
