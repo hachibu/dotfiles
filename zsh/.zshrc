@@ -81,6 +81,11 @@ function delete-postmaster-pid() {
   rm -rf "/usr/local/var/postgresql@9.6/postmaster.pid"
 }
 
+function reset-postgres() {
+  rm -rf /usr/local/var/postgres
+  initdb /usr/local/var/postgres -E utf8
+}
+
 # Initializers
 if [ -x "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
