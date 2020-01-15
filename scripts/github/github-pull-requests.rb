@@ -9,10 +9,10 @@ client = Octokit::Client.new(
 )
 client.auto_paginate = true
 
-members = client.organization_members(org).map { |m| m.login }
+members = client.organization_members(org).map(&:login)
 repos = client.organization_repositories(org)
-  .select { |r| r.open_issues_count > 0 }
-  .map { |r| r.name }
+              .select { |r| r.open_issues_count.positive? }
+              .map(&:name)
 
 prs = []
 
@@ -26,7 +26,7 @@ prs = prs.map do |pr|
   labels = if pr.labels.empty?
              'needs review'
            else
-             pr.labels.map { |l| l.name }.join(', ')
+             pr.labels.map(&:name).join(', ')
            end
   days_open = ((Time.now.getutc - pr.created_at).to_i / 86_400).to_i
 
@@ -34,8 +34,10 @@ prs = prs.map do |pr|
     user: pr.user.login,
     url: pr.html_url.sub('https://', ''),
     labels: labels,
-    days_open: days_open,
+    days_open: days_open
   }
 end
+
+prs = prs.sort_by { |pr| pr[:days_open] }
 
 tp prs, :user, { url: { width: 100 } }, { labels: { width: 100 } }, :days_open
