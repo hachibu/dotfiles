@@ -40,4 +40,26 @@ end
 
 prs = prs.sort_by { |pr| pr[:days_open] }
 
-tp prs, :user, { url: { width: 100 } }, { labels: { width: 100 } }, :days_open
+tp(
+  prs,
+  {
+    user: {
+      display_name: 'USER'
+    }
+  },
+  {
+    url: {
+      width: 100
+    }
+  },
+  {
+    labels: {
+      width: 100
+    }
+  },
+  {
+    days_open: {
+      display_name: 'DAYS OPEN'
+    }
+  }
+)
