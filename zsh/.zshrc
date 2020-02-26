@@ -43,6 +43,7 @@ if [ -f '/Users/ray/Code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ray/Co
 if [ -f '/Users/ray/Code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ray/Code/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Aliases
+alias dc="docker-compose"
 alias fs="bundle exec foreman start"
 alias gc="git commit"
 alias gc!="git commit --amend"
