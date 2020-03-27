@@ -15,8 +15,9 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'rking/ag.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
+Plugin 'gabrielelana/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
