@@ -5,9 +5,9 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'w0rp/ale'
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'isRuslan/vim-es6'
 Plugin 'rhysd/vim-crystal'
