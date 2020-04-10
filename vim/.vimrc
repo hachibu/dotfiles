@@ -26,6 +26,7 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 set colorcolumn=81
 set expandtab
+set formatoptions+=a
 set history=10000
 set hlsearch
 set incsearch
