@@ -32,6 +32,7 @@ fi
 PATH="$HOME/Library/Python/3.7/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="/usr/local/go/bin:$PATH"
+PATH="/Library/TeX/texbin/:$PATH"
 
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then

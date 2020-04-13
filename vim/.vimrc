@@ -26,7 +26,7 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 set colorcolumn=81
 set expandtab
-set formatoptions+=a
+"set formatoptions+=a
 set history=10000
 set hlsearch
 set incsearch
@@ -44,6 +44,7 @@ set t_Co=256
 set tabstop=2
 set title
 set updatetime=500
+set virtualedit=all
 set wildmode=list:longest,list:full
 
 autocmd FileType Markdown setlocal spell
