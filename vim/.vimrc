@@ -10,13 +10,14 @@ Plugin 'w0rp/ale'
 "Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'isRuslan/vim-es6'
-Plugin 'rhysd/vim-crystal'
-Plugin 'rust-lang/rust.vim'
+"Plugin 'rhysd/vim-crystal'
+"Plugin 'rust-lang/rust.vim'
 Plugin 'rking/ag.vim'
 Plugin 'cespare/vim-toml'
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'chemzqm/vim-run'
 
 call vundle#end()
 filetype plugin indent on
