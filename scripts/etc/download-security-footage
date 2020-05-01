@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+DATE="$1"
+SRC="hachibu@blue-demon:/home/hachibu/Code/ipcam/media/$DATE/"
+DEST="$DATE/"
+
+echo "Syncing $SRC to $DEST..."
+
+rsync -a "$SRC" "$DEST"
