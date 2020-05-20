@@ -97,3 +97,4 @@ fi
 truncate-history
 
 source /Users/$USER/Library/Preferences/org.dystroy.broot/launcher/bash/br
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
