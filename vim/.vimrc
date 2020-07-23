@@ -19,6 +19,7 @@ Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'chemzqm/vim-run'
+Plugin 'reedes/vim-lexical'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,8 +50,6 @@ set updatetime=500
 set virtualedit=all
 set wildmode=list:longest,list:full
 
-autocmd FileType Markdown setlocal spell
-
 highlight LineNr ctermfg=grey
 
 nnoremap <C-J> <C-W><C-J>
@@ -64,3 +63,10 @@ let g:syntastic_html_tidy_ignore_errors=['proprietary attribute', 'trimming empt
 " remap escape key to delete, handy on kinesis advantage
 vnoremap <Del> <esc>
 noremap! <Del> <esc>
+
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile call lexical#init()
+  autocmd FileType text call lexical#init({ 'spell': 0 })
+augroup END
