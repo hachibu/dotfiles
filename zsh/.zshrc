@@ -89,6 +89,10 @@ function reset-postgres() {
   initdb /usr/local/var/postgres -E utf8
 }
 
+function delete-ds-store() {
+  find . -name '.DS_Store' -type f -delete
+}
+
 # Initializers
 if [ -x "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
