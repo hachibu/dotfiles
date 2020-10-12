@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'date'
+
+notes_dir = File.join Dir.home, '.notes'
+todays_note = "#{notes_dir}/#{Date.today}.md"
+
+system 'mkdir', '-p', notes_dir
+system ENV['EDITOR'], todays_note
