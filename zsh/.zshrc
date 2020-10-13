@@ -1,6 +1,7 @@
 ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="hachibu"
+ZSH_DISABLE_COMPFIX="true"
 
 plugins=(git heroku redis-cli yarn zsh_reload)
 
@@ -101,5 +102,4 @@ fi
 
 truncate-history
 
-source /Users/$USER/Library/Preferences/org.dystroy.broot/launcher/bash/br
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
