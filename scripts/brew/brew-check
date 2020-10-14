@@ -1,17 +1,6 @@
-#!/usr/bin/env crystal
+#!/usr/bin/env bash
 
-require "colorize"
-
-exec_command = ->(command : String) do
-  puts("#{"==>".colorize.blue} #{command}")
-  system(command)
-end
-
-commands = [
-  "brew update",
-  "brew cleanup -s",
-  "brew missing",
-  "brew doctor"
-]
-
-commands.each(&exec_command)
+brew update
+brew cleanup -s
+brew missing
+brew doctor

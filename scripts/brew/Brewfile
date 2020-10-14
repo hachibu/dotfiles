@@ -13,27 +13,20 @@ cask 'google-chrome'
 cask 'iterm2'
 cask 'slack'
 cask 'spotify'
-cask 'vlc'
 
 # Shells
 brew 'bash'
 brew 'zsh'
 
 # Languages
-brew 'crystal-lang'
 brew 'node'
 brew 'rbenv'
-brew 'rust'
-
-# Databases
-brew 'redis'
 
 # Tools
 brew 'daemontools'
 brew 'git'
 brew 'jq'
 brew 'openssl'
-brew 'ripgrep'
 brew 'shellcheck'
 brew 'stow'
 brew 'the_silver_searcher'
