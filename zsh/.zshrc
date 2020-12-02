@@ -19,6 +19,7 @@ export LIBRARY_PATH="/usr/local/opt/openssl/lib"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export EDITOR="vim"
+export NOTE_DIR="$HOME/Dropbox/Notes"
 
 # Path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
