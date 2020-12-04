@@ -20,6 +20,7 @@ export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export EDITOR="vim"
 export NOTE_DIR="$HOME/Dropbox/Notes"
+export TIMEWARRIORDB="$HOME/Dropbox/TimeWarrior"
 
 # Path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
