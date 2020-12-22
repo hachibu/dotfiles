@@ -71,3 +71,12 @@ augroup lexical
   autocmd FileType textile call lexical#init()
   autocmd FileType text call lexical#init({ 'spell': 0 })
 augroup END
+
+let wiki_1 = {}
+let wiki_1.path = '~/Dropbox/Wiki'
+
+let wiki_2 = {}
+let wiki_2.path = '~/Code/project-200-hours/wiki'
+let wiki_2.path_html = '~/Code/project-200-hours/docs'
+
+let g:vimwiki_list = [wiki_1, wiki_2]
