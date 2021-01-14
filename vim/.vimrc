@@ -77,7 +77,7 @@ let wiki_1 = {}
 let wiki_1.path = '~/Dropbox/Wiki'
 
 let wiki_2 = {}
-let wiki_2.path = '~/Code/project-200/wiki'
-let wiki_2.path_html = '~/Code/project-200/docs'
+let wiki_2.path = '~/Code/project-300/wiki'
+let wiki_2.path_html = '~/Code/project-300/docs'
 
 let g:vimwiki_list = [wiki_1, wiki_2]
