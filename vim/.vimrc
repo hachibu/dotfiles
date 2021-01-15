@@ -81,3 +81,5 @@ let wiki_2.path = '~/Code/project-300/wiki'
 let wiki_2.path_html = '~/Code/project-300/docs'
 
 let g:vimwiki_list = [wiki_1, wiki_2]
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
