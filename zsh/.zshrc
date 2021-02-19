@@ -97,6 +97,14 @@ function delete-ds-store() {
   find . -name '.DS_Store' -type f -delete
 }
 
+function delete-node-modules() {
+  find . -name 'node_modules' -type d -exec rm -rf '{}' \;
+}
+
+function sizeof-node-modules() {
+  find . -name "node_modules" -type d -prune -print | xargs du -chs
+}
+
 # Initializers
 if [ -x "$(command -v rbenv)" ]; then
   eval "$(rbenv init -)"
