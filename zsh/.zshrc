@@ -44,12 +44,7 @@ if [ -d $SCRIPTS_PATH ]; then
   done
 fi
 
-if [ -f '/Users/ray/Code/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/ray/Code/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/Users/ray/Code/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/ray/Code/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Aliases
-alias dc="docker-compose"
-alias fs="bundle exec foreman start"
 alias gc="git commit"
 alias gc!="git commit --amend"
 alias gas=" cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh | grep alias | less"
@@ -59,18 +54,10 @@ alias gfp="gfa && gup"
 alias gp!="gp -f"
 alias gs="git show"
 alias gsn="git show --name-only"
-alias mock-cxi-csv="mock-csv feedback:quote feedback_date:time user_id:email"
-alias rake="bundle exec rake"
-alias rbenv-gcc="CC=/usr/bin/gcc rbenv"
-alias rails="foreman run rails"
-alias rspec="bundle exec rspec --color"
 alias n="note.sh"
 alias t="todo.sh"
 alias tree="tree -a -C -I 'node_modules|target|.git|.vim'"
 alias vimrc="vim $HOME/.vimrc"
-alias ws="svscan $HOME/Code/Wootric/services/wootric-services"
-alias wpr="github-pull-requests.rb Wootric"
-alias wprp="github-pull-requests.rb Wootric | text-wrap '\`\`\`' | slack-post-message development-discuss"
 alias zshrc="vim $HOME/.zshrc"
 
 # Functions
@@ -82,15 +69,6 @@ function git-root() {
 
 function truncate-history() {
   echo "$(tail -n 1000 $HISTFILE)" > $HISTFILE
-}
-
-function delete-postmaster-pid() {
-  rm -rf "/usr/local/var/postgresql@9.6/postmaster.pid"
-}
-
-function reset-postgres() {
-  rm -rf /usr/local/var/postgres
-  initdb /usr/local/var/postgres -E utf8
 }
 
 function delete-ds-store() {
