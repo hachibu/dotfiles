@@ -19,7 +19,7 @@ Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'godlygeek/tabular'
 "Plugin 'plasticboy/vim-markdown'
 "Plugin 'chemzqm/vim-run'
-"Plugin 'reedes/vim-lexical'
+Plugin 'reedes/vim-lexical'
 "Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
