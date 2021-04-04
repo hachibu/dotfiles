@@ -15,6 +15,7 @@ else
 fi
 
 # Exports
+export PYTHONDONTWRITEBYTECODE=1
 export LIBRARY_PATH="/usr/local/opt/openssl/lib"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
@@ -56,7 +57,7 @@ alias gs="git show"
 alias gsn="git show --name-only"
 alias n="note.sh"
 alias t="todo.sh"
-alias tree="tree -a -C -I 'node_modules|target|.git|.vim'"
+alias tree="tree -a -C -I 'node_modules|target|.git|.vim|.pytest_cache'"
 alias vimrc="vim $HOME/.vimrc"
 alias zshrc="vim $HOME/.zshrc"
 
