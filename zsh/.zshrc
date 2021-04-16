@@ -48,13 +48,9 @@ fi
 # Aliases
 alias gc="git commit"
 alias gc!="git commit --amend"
-alias gas=" cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh | grep alias | less"
 alias gbd!="git branch -D"
-alias gce="git config --edit --global"
 alias gfp="gfa && gup"
 alias gp!="gp -f"
-alias gs="git show"
-alias gsn="git show --name-only"
 alias n="note.sh"
 alias t="todo.sh"
 alias tree="tree -a -C -I 'node_modules|target|.git|.vim|.pytest_cache'"
