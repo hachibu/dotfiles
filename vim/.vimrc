@@ -21,6 +21,7 @@ Plugin 'godlygeek/tabular'
 "Plugin 'chemzqm/vim-run'
 Plugin 'reedes/vim-lexical'
 "Plugin 'vimwiki/vimwiki'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
