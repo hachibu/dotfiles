@@ -35,7 +35,7 @@ set expandtab
 set history=10000
 set hlsearch
 set incsearch
-set list
+set nolist
 set listchars=trail:~
 set mouse=a
 set nofoldenable
