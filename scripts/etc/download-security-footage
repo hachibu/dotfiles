@@ -3,7 +3,7 @@
 DAYS="${1:-0}"
 DAYS_AGO="-${DAYS}d"
 DATE=$(date -v "$DAYS_AGO" "+%Y-%m-%d")
-SRC="hachibu@blue-demon-local:/home/hachibu/Code/ipcam/media/$DATE/"
+SRC="hachibu@blue-demon:/home/hachibu/Code/ipcam/media/$DATE/"
 DEST="$DATE/"
 
 rsync -rvhP "$SRC" "$DEST"
