@@ -55,7 +55,7 @@ alias gfp="gfa && gup"
 alias gp!="gp -f"
 alias n="note.sh"
 alias t="todo.sh"
-alias tree="tree -a -C -I 'node_modules|target|.git|.vim|.pytest_cache'"
+alias tree="tree -a -C -I 'node_modules|target|.git|.vim|.pytest_cache|bazel-*'"
 alias vimrc="vim $HOME/.vimrc"
 alias zshrc="vim $HOME/.zshrc"
 
