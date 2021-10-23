@@ -1,8 +1,8 @@
 # Casks
 cask_args appdir: '/Applications'
 
-tap 'caskroom/homebrew-cask'
-tap 'caskroom/fonts'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
 
 # Apps
 cask '1password'
@@ -20,12 +20,14 @@ brew 'zsh'
 
 # Languages
 brew 'node'
-brew 'rbenv'
+brew 'go'
 
 # Tools
+brew 'bazel'
 brew 'daemontools'
 brew 'git'
 brew 'jq'
+brew 'fzf'
 brew 'openssl'
 brew 'shellcheck'
 brew 'stow'
