@@ -37,7 +37,7 @@ PATH="$HOME/Library/Python/3.7/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 PATH="/Library/TeX/texbin/:$PATH"
 
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
 
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
