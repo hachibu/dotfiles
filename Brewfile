@@ -5,33 +5,26 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 
 # Apps
-cask '1password'
-cask 'dropbox'
-cask 'firefox'
 cask 'font-iosevka'
-cask 'google-chrome'
-cask 'iterm2'
-cask 'slack'
-cask 'spotify'
 
 # Shells
 brew 'bash'
 brew 'zsh'
 
 # Languages
-brew 'node'
 brew 'go'
+brew 'node'
+
+# Package Managers
+brew 'bazel'
+brew 'buildifier'
+brew 'yarn'
 
 # Tools
-brew 'bazel'
-brew 'daemontools'
 brew 'git'
 brew 'jq'
 brew 'fzf'
-brew 'openssl'
-brew 'shellcheck'
 brew 'stow'
-brew 'the_silver_searcher'
+brew 'ripgrep'
 brew 'tree'
 brew 'vim'
-brew 'yarn'

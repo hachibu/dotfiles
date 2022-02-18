@@ -1,15 +1,13 @@
 # dotfiles
 
-## Requirements
+## Install
 
-- [Stow](https://www.gnu.org/software/stow)
+- Install [Homebrew](https://brew.sh)
+- brew tap Homebrew/bundle
+- brew bundle
+- Install [Oh My Zsh](https://ohmyz.sh/#install)
+- make install
 
-## Usage
+## Uninstall
 
-### Install
-
-    make install
-
-### Uninstall
-
-    make uninstall
+- make uninstall

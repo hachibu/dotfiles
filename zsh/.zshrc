@@ -15,27 +15,17 @@ else
 fi
 
 # Exports
-export PYTHONDONTWRITEBYTECODE=1
 export LIBRARY_PATH="/usr/local/opt/openssl/lib"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export EDITOR="vim"
-export NOTE_DIR="$HOME/Dropbox/Notes"
-export TIMEWARRIORDB="$HOME/Dropbox/TimeWarrior"
 
 # Path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  PATH="/usr/local/bin:$PATH"
-  for DIR in /usr/local/opt/*/bin; do
-    if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
-  done
+  PATH="/opt/homebrew/bin:$PATH"
 fi
-
-PATH="$HOME/Library/Python/3.7/bin:$PATH"
-PATH="$HOME/.cargo/bin:$PATH"
-PATH="/Library/TeX/texbin/:$PATH"
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
@@ -53,11 +43,6 @@ alias gc!="git commit --amend"
 alias gbd!="git branch -D"
 alias gfp="gfa && gup"
 alias gp!="gp -f"
-alias n="note.sh"
-alias t="todo.sh"
-alias tree="tree -a -C -I 'node_modules|target|.git|.vim|.pytest_cache|bazel-*'"
-alias vimrc="vim $HOME/.vimrc"
-alias zshrc="vim $HOME/.zshrc"
 
 # Functions
 function git-root() {
@@ -65,28 +50,3 @@ function git-root() {
     cd ..
   done
 }
-
-function truncate-history() {
-  echo "$(tail -n 1000 $HISTFILE)" > $HISTFILE
-}
-
-function delete-ds-store() {
-  find . -name '.DS_Store' -type f -delete
-}
-
-function delete-node-modules() {
-  find . -name 'node_modules' -type d -exec rm -rf '{}' \;
-}
-
-function sizeof-node-modules() {
-  find . -name "node_modules" -type d -prune -print | xargs du -chs
-}
-
-# Initializers
-if [ -x "$(command -v brew)" ]; then
-  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-fi
-
-if [ -x "$(command -v rbenv)" ]; then
-  eval "$(rbenv init -)"
-fi
