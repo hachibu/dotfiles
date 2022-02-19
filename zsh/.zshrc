@@ -43,6 +43,7 @@ alias gc!="git commit --amend"
 alias gbd!="git branch -D"
 alias gfp="gfa && gup"
 alias gp!="gp -f"
+alias localstack="python3 -m localstack.cli.main"
 
 # Functions
 function git-root() {
