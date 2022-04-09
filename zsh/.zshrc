@@ -22,6 +22,7 @@ export EDITOR="vim"
 
 # Path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   PATH="/opt/homebrew/bin:$PATH"
@@ -29,6 +30,8 @@ fi
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$(go env GOPATH)
+
+PATH=$PATH:$HOME/.cargo/bin
 
 SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
 if [ -d $SCRIPTS_PATH ]; then
@@ -51,3 +54,8 @@ function git-root() {
     cd ..
   done
 }
+
+if command -v rbenv &> /dev/null
+then
+  eval "$(rbenv init - zsh)"
+fi
