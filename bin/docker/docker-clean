@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+containers=$(docker ps -qa)
+if [[ ! -z "$containers" ]]; then
+    docker stop $containers
+    docker rm $containers
+fi
+
+images=$(docker images -qa)
+if [[ ! -z "$images" ]]; then
+    docker rmi -f $images
+fi
+
+volumes=$(docker volume ls -q)
+if [[ ! -z "$volumes" ]]; then
+    docker volume rm $volumes
+fi

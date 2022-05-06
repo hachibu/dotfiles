@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+while [ ! -d ".git" ]; do
+  cd ..
+done

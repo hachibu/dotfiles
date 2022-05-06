@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+CASKS=$(brew list -1 --cask)
+FORMULAS=$(brew list -1 --formula)
+
+echo $CASKS    | xargs brew uninstall --force --zap --ignore-dependencies --cask
+echo $FORMULAS | xargs brew uninstall --force --zap --ignore-dependencies --formula

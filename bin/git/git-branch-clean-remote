@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+git fetch --all --prune
+
+REMOTE_BRANCHES=$(git branch --remote --format "%(refname:short)")
+
+for BRANCH in $REMOTE_BRANCHES; do
+    BRANCH_REMOTE=$(echo $BRANCH | awk -F '/' '{ print $1 }')
+    BRANCH_NAME=$(echo $BRANCH | awk -F '/' '{
+        sub($1, "", $0);
+        sub("/", "", $0);
+        print $0
+    }')
+
+    case $BRANCH_NAME in
+        HEAD) continue;;
+        master) continue;;
+        main) continue;;
+    esac
+
+    git push $BRANCH_REMOTE --delete $BRANCH_NAME
+done

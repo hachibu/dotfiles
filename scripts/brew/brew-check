@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-brew update
-brew cleanup -s
-brew missing
-brew doctor

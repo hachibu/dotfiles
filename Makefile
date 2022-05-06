@@ -1,13 +1,17 @@
-STOW_DIRS  = git vim zsh
+STOW_DIRS = git vim zsh
 
-.PHONY: install
-install:
+setup-linux:
+	@bin/setup/setup-linux
+
+setup-mac:
+	@bin/setup/setup-mac
+
+dotfiles-install:
 	@stow -S stow -t ~
 	@stow -S $(STOW_DIRS) -t ~
-	@echo 'dotfiles installed'
+	@echo 'dotfiles installed: $(STOW_DIRS)'
 
-.PHONY: uninstall
-uninstall:
+dotfiles-uninstall:
 	@stow -D $(STOW_DIRS) -t ~
 	@stow -D stow -t ~
-	@echo 'dotfiles uninstalled'
+	@echo 'dotfiles uninstalled: $(STOW_DIRS)'

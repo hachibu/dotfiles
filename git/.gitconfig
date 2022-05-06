@@ -6,6 +6,9 @@
   editor       = vim
   excludesfile = ~/.gitignore
 
+[init]
+  defaultBranch = main
+
 [color]
   ui     = auto
   status = auto
@@ -21,18 +24,9 @@
 [push]
   default = current
 
-[alias]
-  fix = commit -a --amend --cleanup=strip -C HEAD
-  diff-names = diff --name-only
-  show-names = show --name-only
-
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-
 [rebase]
   autoStash = true
-[init]
-  defaultBranch = main
+
+[alias]
+  fix = commit -a --amend --cleanup=strip -C HEAD
+  fetch = fetch --all --prune

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+LOCAL_BRANCHES=$(git branch --format "%(refname:short)")
+
+for BRANCH in $LOCAL_BRANCHES; do
+    case $BRANCH in
+        master) continue;;
+        main) continue;;
+    esac
+
+    git branch -D $BRANCH
+done

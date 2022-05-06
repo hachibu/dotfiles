@@ -2,12 +2,9 @@
 
 ## Install
 
-- Install [Homebrew](https://brew.sh)
-- brew tap Homebrew/bundle
-- brew bundle
-- Install [Oh My Zsh](https://ohmyz.sh/#install)
-- make install
+1. Depending on your OS, run `make setup-linux` or `make setup-mac`.
+2. Run `make dotfiles-install`.
 
 ## Uninstall
 
-- make uninstall
+1. Run `make dotfiles-uninstall`.

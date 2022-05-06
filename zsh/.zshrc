@@ -2,6 +2,7 @@ ZSH="$HOME/.oh-my-zsh"
 ZSH_CUSTOM="$HOME/.zsh-custom"
 ZSH_THEME="hachibu"
 ZSH_DISABLE_COMPFIX="true"
+EDITOR="vim"
 
 plugins=(git)
 
@@ -14,48 +15,25 @@ else
   touch $SECRETS_PATH
 fi
 
-# Exports
-export LIBRARY_PATH="/usr/local/opt/openssl/lib"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-export EDITOR="vim"
+if command -v go &> /dev/null; then
+  GOPATH=$(go env GOPATH)
+fi
 
 # Path
 PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   PATH="/opt/homebrew/bin:$PATH"
 fi
 
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$(go env GOPATH)
-
-PATH=$PATH:$HOME/.cargo/bin
-
-SCRIPTS_PATH="$HOME/Code/dotfiles/scripts"
+SCRIPTS_PATH="$HOME/Code/dotfiles/bin"
 if [ -d $SCRIPTS_PATH ]; then
   for DIR in $SCRIPTS_PATH/*; do
     if [[ -d $DIR ]]; then PATH="$DIR:$PATH"; fi
   done
 fi
 
-# Aliases
-alias gc="git commit"
-alias gc!="git commit --amend"
-alias gbd!="git branch -D"
-alias gfp="gfa && gup"
-alias gp!="gp -f"
-alias localstack="python3 -m localstack.cli.main"
-
-# Functions
-function git-root() {
-  while [ ! -d ".git" ]; do
-    cd ..
-  done
-}
-
-if command -v rbenv &> /dev/null
-then
+# Initializers
+if command -v rbenv &> /dev/null; then
   eval "$(rbenv init - zsh)"
 fi
