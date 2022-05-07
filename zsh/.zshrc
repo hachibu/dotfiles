@@ -1,6 +1,5 @@
 ZSH="$HOME/.oh-my-zsh"
-ZSH_CUSTOM="$HOME/.zsh-custom"
-ZSH_THEME="hachibu"
+ZSH_THEME="lukerandall"
 ZSH_DISABLE_COMPFIX="true"
 EDITOR="vim"
 
