@@ -2,7 +2,6 @@
 
 brew update
 brew autoremove
-brew bundle cleanup --force
 brew cleanup -s --prune=all
 brew missing
 brew doctor
