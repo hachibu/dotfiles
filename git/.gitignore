@@ -27,3 +27,6 @@ Temporary Items
 # Vim
 *.sw*
 *.log
+
+# VSCode
+.vscode
