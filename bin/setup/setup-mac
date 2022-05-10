@@ -14,3 +14,4 @@ fi
 
 brew tap Homebrew/bundle
 brew bundle install --no-lock
+brew bundle cleanup
