@@ -20,7 +20,7 @@ brew 'vim'
 
 # Tools
 brew 'awscli'
-brew 'bazel'
+brew 'bazelisk'
 brew 'buildifier'
 brew 'fzf'
 brew 'git'
