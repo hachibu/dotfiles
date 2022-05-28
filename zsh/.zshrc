@@ -5,6 +5,7 @@ ZSH_THEME="lukerandall"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.secrets
 
 EDITOR="vim"
 
