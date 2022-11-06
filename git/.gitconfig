@@ -1,6 +1,7 @@
 [user]
-  name  = hachibu
-  email = raymondsohn@gmail.com
+  name  = Raymond Sohn
+	email = raymondsohn@gmail.com
+	signingkey = CEB8F94A363580DF
 
 [core]
   editor       = vim
@@ -31,3 +32,9 @@
   fix = commit -a --amend --cleanup=strip -C HEAD
   fetch = fetch --all --prune
   gc = gc --aggressive --prune=now
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = gpg
