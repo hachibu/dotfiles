@@ -13,7 +13,6 @@ brew 'zsh'
 # Languages
 brew 'go'
 brew 'node'
-brew 'rbenv'
 
 # Package Managers
 brew 'yarn'
