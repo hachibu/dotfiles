@@ -3,6 +3,9 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/cask'
 
+# Casks
+cask 'gpg-suite'
+
 # Shells
 brew 'bash'
 brew 'zsh'
