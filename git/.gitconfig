@@ -34,7 +34,8 @@
   gc = gc --aggressive --prune=now
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 
 [gpg]
 	program = gpg
+
