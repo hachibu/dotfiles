@@ -1,6 +1,6 @@
 # ZSH
 ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="lukerandall"
+ZSH_THEME="robbyrussell"
 
 plugins=(git)
 
