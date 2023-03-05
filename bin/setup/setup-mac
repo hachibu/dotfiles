@@ -6,8 +6,8 @@ else
     bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-if [ -d "$HOME/.oh-my-zsh" ]; then
-     ~/.oh-my-zsh/tools/upgrade.sh 
+if command -v omz &> /dev/null; then
+    omz update
 else
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
