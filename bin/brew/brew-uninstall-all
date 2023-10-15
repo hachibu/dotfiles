@@ -3,5 +3,10 @@
 CASKS=$(brew list -1 --cask)
 FORMULAS=$(brew list -1 --formula)
 
-echo $CASKS    | xargs brew uninstall --force --ignore-dependencies --cask
-echo $FORMULAS | xargs brew uninstall --force --ignore-dependencies --formula
+read -p "Are you sure? [y/N] " -n 1 -r
+if [[ $REPLY =~ ^[y]$ ]]
+then
+    echo
+    echo "$CASKS" | xargs brew uninstall --force --zap --ignore-dependencies --cask
+    echo "$FORMULAS" | xargs brew uninstall --force --zap --ignore-dependencies --formula
+fi
