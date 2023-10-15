@@ -5,25 +5,14 @@ tap 'homebrew/cask'
 
 # Casks
 cask 'gpg-suite'
+cask 'visual-studio-code'
 
 # Shells
 brew 'bash'
 brew 'zsh'
 
-# Languages
-brew 'go'
-brew 'node'
-
-# Package Managers
-brew 'yarn'
-
-# Editors
-brew 'vim'
-
-# Tools
+# Command Line Tools
 brew 'awscli'
-brew 'bazelisk'
-brew 'buildifier'
 brew 'fzf'
 brew 'git'
 brew 'hugo'
@@ -31,3 +20,4 @@ brew 'jq'
 brew 'ripgrep'
 brew 'stow'
 brew 'tree'
+brew 'vim'

@@ -8,3 +8,7 @@
 ## Uninstall
 
 1. Run `make uninstall`.
+
+## Fonts
+
+- [FiraCode](https://github.com/tonsky/FiraCode)
