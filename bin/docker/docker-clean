@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if (! docker stats --no-stream); then
+    exit 1
+fi
+
 containers=$(docker ps -qa)
 if [[ -n "$containers" ]]; then
     docker stop "$containers"
