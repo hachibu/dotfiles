@@ -11,13 +11,17 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   PATH="/opt/homebrew/bin:$PATH"
 fi
 
+if command -v cargo &> /dev/null; then
+  PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+if command -v deno &> /dev/null; then
+  PATH="$HOME/.deno/bin:$PATH"
+fi
+
 if command -v go &> /dev/null; then
   GOPATH=$(go env GOPATH)
   PATH="$GOPATH/bin:$PATH"
-fi
-
-if command -v cargo &> /dev/null; then
-  PATH="/$HOME/.cargo/bin:$PATH"
 fi
 
 DOTFILES_BIN_PATH="$HOME/Code/dotfiles/bin"
