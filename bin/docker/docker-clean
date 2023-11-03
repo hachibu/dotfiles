@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-if (! docker stats --no-stream); then
+if (! docker stats --no-stream > /dev/null); then
     exit 1
 fi
 
 containers=$(docker ps -qa)
 if [[ -n "$containers" ]]; then
-    docker stop "$containers"
-    docker rm "$containers"
+    echo "$containers"| xargs docker stop
+    echo "$containers"| xargs docker rm
 fi
 
 images=$(docker images -qa)
 if [[ -n "$images" ]]; then
-    docker rmi -f "$images"
+    echo "$images" | xargs docker rmi -f 
 fi
 
 volumes=$(docker volume ls -q)
 if [[ -n "$volumes" ]]; then
-    docker volume rm "$volumes"
+    echo "$volumes" | xargs docker volume rm
 fi
