@@ -8,5 +8,5 @@ for BRANCH in $LOCAL_BRANCHES; do
         main) continue;;
     esac
 
-    git branch -D $BRANCH
+    git branch -D "$BRANCH"
 done
