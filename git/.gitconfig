@@ -34,9 +34,9 @@
   gc = gc --aggressive --prune=now
   up = !git fetch --all --prune && git pull
 
-[commit]
-	gpgsign = true
+# [commit]
+# 	gpgsign = true
 
-[gpg]
-	program = gpg
+# [gpg]
+# 	program = gpg
 
