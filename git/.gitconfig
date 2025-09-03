@@ -30,13 +30,4 @@
 
 [alias]
   fix = commit -a --amend --cleanup=strip -C HEAD
-  fetch = fetch --all --prune
-  gc = gc --aggressive --prune=now
   up = !git fetch --all --prune && git pull
-
-# [commit]
-# 	gpgsign = true
-
-# [gpg]
-# 	program = gpg
-
